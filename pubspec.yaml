@@ -16,7 +16,7 @@ topics:
   - variables
 
 environment:
-  sdk: ^3.8.1
+  sdk: ^3.6.0
 
 dependencies:
   build: ^2.4.0
