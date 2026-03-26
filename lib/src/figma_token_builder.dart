@@ -27,12 +27,9 @@ class FigmaTokenBuilder implements Builder {
 
   FigmaTokenBuilder(this.options);
 
-  String get _inputDir =>
-      options.config['input_dir'] as String? ?? 'assets/figma';
-  String get _outputDir =>
-      options.config['output_dir'] as String? ?? 'lib/generated';
-  String get _baseClass =>
-      options.config['base_class'] as String? ?? 'Figma';
+  String get _inputDir => options.config['input_dir'] as String? ?? 'assets/figma';
+  String get _outputDir => options.config['output_dir'] as String? ?? 'lib/generated';
+  String get _baseClass => options.config['base_class'] as String? ?? 'Figma';
 
   @override
   Map<String, List<String>> get buildExtensions {
@@ -96,13 +93,11 @@ class FigmaTokenBuilder implements Builder {
     _writeHeader(buffer);
 
     final isMultiCollection =
-        collections.length > 1 ||
-        (collections.length == 1 && collections.first.name.isNotEmpty);
+        collections.length > 1 || (collections.length == 1 && collections.first.name.isNotEmpty);
 
     for (final collection in collections) {
-      final className = isMultiCollection
-          ? '$_baseClass${_toPascalCase(collection.name)}'
-          : _baseClass;
+      final className =
+          isMultiCollection ? '$_baseClass${_toPascalCase(collection.name)}' : _baseClass;
       _generateCollectionClass(buffer, className, collection);
     }
 
@@ -137,7 +132,7 @@ class FigmaTokenBuilder implements Builder {
     final firstJson = collection.modeJsons.values.first;
 
     // Separate flat tokens (have $type) from groups (nested maps without $type)
-    final flatTokens = <String>[];
+    final flatTokens = <String, Map<String, dynamic>>{};
     final groups = <String, List<String>>{};
 
     firstJson.forEach((key, value) {
@@ -145,7 +140,7 @@ class FigmaTokenBuilder implements Builder {
       if (value is Map<String, dynamic>) {
         if (value.containsKey(r'$type')) {
           // Flat token: has $type/$value directly
-          flatTokens.add(key);
+          flatTokens[key] = value;
         } else {
           // Group: nested map containing tokens
           final tokens = value.keys.where((k) => !k.startsWith(r'$')).toList();
@@ -167,7 +162,7 @@ class FigmaTokenBuilder implements Builder {
     } else {
       // Multiple groups (and/or mix of flat + grouped) → nested classes
       if (flatTokens.isNotEmpty) {
-        groups['_root'] = flatTokens;
+        groups['_root'] = flatTokens.keys.toList();
       }
       _generateNestedClass(buffer, className, collection, groups);
     }
@@ -183,29 +178,35 @@ class FigmaTokenBuilder implements Builder {
     StringBuffer b,
     String className,
     _CollectionData collection,
-    List<String> tokens,
+    Map<String, Map<String, dynamic>> tokens,
   ) {
-    b.writeln('class $className extends ThemeExtension<$className> {');
+    final mapTokens = <String, ({String type, String value})>{};
+    for (final t in tokens.keys) {
+      final tv = _extractFlatTypeValue(tokens[t]!, t);
+      mapTokens[_toCamelCase(t)] = tv;
+    }
 
-    for (final t in tokens) {
-      b.writeln('  final double ${_toCamelCase(t)};');
+    b.writeln('class $className extends ThemeExtension<$className> {');
+    for (final t in mapTokens.keys) {
+      b.writeln('  final ${mapTokens[t]?.type} $t;');
     }
     b.writeln();
 
     b.writeln('  const $className({');
-    for (final t in tokens) {
+    for (final t in tokens.keys) {
       b.writeln('    required this.${_toCamelCase(t)},');
     }
     b.writeln('  });');
     b.writeln();
 
+    // Other JSON variants in the same folder (ex: light/dark)
     final sortedModes = collection.modeJsons.keys.toList()..sort();
     for (final modeName in sortedModes) {
       final json = collection.modeJsons[modeName]!;
       b.writeln('  static const ${_toCamelCase(modeName)} = $className(');
-      for (final t in tokens) {
-        final value = _extractFlatValue(json, t);
-        b.writeln('    ${_toCamelCase(t)}: ${value.toDouble()},');
+      for (final t in tokens.keys) {
+        final value = _extractFlatTypeValue(json[t]!, t);
+        b.writeln('    ${_toCamelCase(t)}: ${value.value},');
       }
       b.writeln('  );');
       b.writeln();
@@ -216,12 +217,12 @@ class FigmaTokenBuilder implements Builder {
     // copyWith
     b.writeln('  @override');
     b.writeln('  $className copyWith({');
-    for (final t in tokens) {
-      b.writeln('    double? ${_toCamelCase(t)},');
+    for (final t in mapTokens.keys) {
+      b.writeln('    ${mapTokens[t]?.type}? $t,');
     }
     b.writeln('  }) {');
     b.writeln('    return $className(');
-    for (final t in tokens) {
+    for (final t in tokens.keys) {
       final camel = _toCamelCase(t);
       b.writeln('      $camel: $camel ?? this.$camel,');
     }
@@ -234,15 +235,32 @@ class FigmaTokenBuilder implements Builder {
     b.writeln('  $className lerp(covariant $className? other, double t) {');
     b.writeln('    if (other == null) return this;');
     b.writeln('    return $className(');
-    for (final t in tokens) {
-      final camel = _toCamelCase(t);
-      b.writeln('      $camel: $camel + (other.$camel - $camel) * t,');
+    for (final t in mapTokens.keys) {
+      final camel = t;
+      final type = mapTokens[t]?.type ?? '';
+      switch (type) {
+        case 'Color':
+          b.writeln('      $camel: Color.lerp($camel, other.$camel, t)!,');
+          break;
+        case 'String':
+          //b.writeln('      $camel: $camel + (other.$camel - $camel) * t,');
+          break;
+        case 'TextStyle':
+          b.writeln('      $camel: TextStyle.lerp($camel, other.$camel, t)!,');
+          break;
+        case 'double':
+          b.writeln('      $camel: lerpDouble($camel, other.$camel, t)!,');
+          // b.writeln('      $camel: $camel + (other.$camel - $camel) * t,');
+          break;
+        default:
+          break;
+      }
     }
     b.writeln('    );');
     b.writeln('  }');
     b.writeln();
 
-    _writeHashEquals(b, className, tokens.map(_toCamelCase).toList());
+    _writeHashEquals(b, className, tokens.keys.map(_toCamelCase).toList());
 
     b.writeln('}');
     b.writeln();
@@ -468,6 +486,7 @@ class FigmaTokenBuilder implements Builder {
       '// ignore_for_file: library_private_types_in_public_api, camel_case_types',
     );
     b.writeln();
+    b.writeln("import 'dart:ui';");
     b.writeln("import 'package:flutter/material.dart';");
     b.writeln();
   }
@@ -481,25 +500,27 @@ class FigmaTokenBuilder implements Builder {
   }
 
   void _writeHashEquals(StringBuffer b, String cls, List<String> fields) {
-    b.writeln('  @override');
-    b.writeln('  int get hashCode {');
-    if (fields.length == 1) {
-      b.writeln('    return ${fields.first}.hashCode;');
-    } else {
-      b.writeln('    return Object.hash(');
-      b.writeln('      ${fields.join(',\n      ')},');
-      b.writeln('    );');
-    }
-    b.writeln('  }');
-    b.writeln();
+    //TODO: Hash - TBV
+    return;
+    // b.writeln('  @override');
+    // b.writeln('  int get hashCode {');
+    // if (fields.length == 1) {
+    //   b.writeln('    return ${fields.first}.hashCode;');
+    // } else {
+    //   b.writeln('    return Object.hash(');
+    //   b.writeln('      ${fields.join(',\n      ')},');
+    //   b.writeln('    );');
+    // }
+    // b.writeln('  }');
+    // b.writeln();
 
-    b.writeln('  @override');
-    b.writeln('  bool operator ==(Object other) {');
-    b.writeln('    if (identical(this, other)) return true;');
-    b.writeln('    if (other is! $cls) return false;');
-    final cond = fields.map((f) => '$f == other.$f').join(' && ');
-    b.writeln('    return $cond;');
-    b.writeln('  }');
+    // b.writeln('  @override');
+    // b.writeln('  bool operator ==(Object other) {');
+    // b.writeln('    if (identical(this, other)) return true;');
+    // b.writeln('    if (other is! $cls) return false;');
+    // final cond = fields.map((f) => '$f == other.$f').join(' && ');
+    // b.writeln('    return $cond;');
+    // b.writeln('  }');
   }
 
   /// Generates accessor classes and the top-level namespace class.
@@ -618,6 +639,84 @@ class FigmaTokenBuilder implements Builder {
     final value = tokenData[r'$value'];
     if (value is num) return value;
     return 0;
+  }
+
+  String _fontType(Map<String, dynamic> json) {
+    final map = <String, String>{};
+
+    final fontSize = json[r'$value'] as double?;
+    final lineHeight = json[r'line-height'] as double?;
+    final letterSpacing = json[r'letter-spacing'] as double?;
+    final fontWeight = json[r'font-weight'] as int?;
+    final fontFamily = json[r'font-family'] as String?;
+
+    if (fontSize != null) map['fontSize'] = fontSize.toString();
+    // Flutter is [fontsize * height = lineheight]
+    // so lineHeight on JSON will be the result of:  [height = lineheight/ fontsize]
+    if (lineHeight != null && fontSize != null) {
+      final calcHeight = (lineHeight / fontSize);
+      map['height'] = calcHeight.toStringAsFixed(2);
+    }
+    if (letterSpacing != null) map['letterSpacing'] = letterSpacing.toString();
+    if (fontWeight != null) {
+      map['fontWeight'] = 'FontWeight.w$fontWeight';
+    }
+    if (fontFamily != null) map['fontFamily'] = "'$fontFamily'";
+
+    StringBuffer buf = StringBuffer('TextStyle(');
+    for (var key in map.keys) {
+      buf.writeln('  $key: ${map[key]},');
+    }
+    if (buf.isEmpty)
+      buf.write(')');
+    else
+      buf.writeln(')');
+
+    // Sample
+    // TextStyle text = TextStyle(
+    //       fontSize: 45,
+    //       height: 52,
+    //       letterSpacing: 0.0,
+    //       fontWeight: FontWeight.w400,
+    //       fontFamily: "Manrope",
+    //     );
+
+    return buf.toString();
+  }
+
+  /// Extracts value from a flat token (no group nesting).
+  ({String type, String value}) _extractFlatTypeValue(Map<String, dynamic> json, String token) {
+    final jtype = json[r'$type'] as String;
+    final jvalue = json[r'$value'];
+    String type = '';
+    String value = '';
+    switch (jtype) {
+      case 'font':
+        type = 'TextStyle';
+        value = _fontType(json);
+        break;
+      case 'number':
+        type = 'double';
+        value = (jvalue is num) ? jvalue.toString() : '0';
+        break;
+      case 'color':
+        final val = (jvalue as String).replaceAll('#', '').toUpperCase();
+        ;
+
+        type = 'Color';
+        value = 'Color(0xFF$val)';
+        break;
+      case 'string':
+        type = 'String';
+        value = jvalue as String;
+        break;
+
+      default:
+        type = 'dynamic';
+        value = jvalue;
+        break;
+    }
+    return (type: type, value: value);
   }
 
   /// Extracts value from a flat token (no group nesting).

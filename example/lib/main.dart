@@ -32,13 +32,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(context.spacing.spaceBlock),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+            const Text('You have pushed the button this many times:', style: ,),
             Text('_counter', style: context.textTheme.headlineMedium),
           ],
         ),
