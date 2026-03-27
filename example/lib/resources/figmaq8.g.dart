@@ -1072,6 +1072,447 @@ class FigmaQ8 {
   static List<ThemeExtension> get tablet => [FigmaQ8Typography.tablet];
 }
 
+abstract class FigmaQ8Tokens {
+  static const Color primaryFixedDimLight = Color(0xFFB5C4FF);
+  static const Color onPrimaryDark = Color(0xFF0B2469);
+  static const Color primaryContainerDark = Color(0xFF0B2469);
+  static const Color onPrimaryContainerDark = Color(0xFFDCE1FF);
+  static const Color primaryFixedDark = Color(0xFFDCE1FF);
+  static const Color onPrimaryFixedDark = Color(0xFF02174B);
+  static const Color primaryFixedDimDark = Color(0xFFB5C4FF);
+  static const Color onPrimaryFixedVariantDark = Color(0xFF344479);
+  static const Color secondaryDark = Color(0xFFC0BEBE);
+  static const Color onSecondaryDark = Color(0xFFF5F5F5);
+  static const Color secondaryContainerDark = Color(0xFF004D62);
+  static const Color onSecondaryContainerDark = Color(0xFFBAEAFF);
+  static const Color secondaryFixedDark = Color(0xFFBAEAFF);
+  static const Color onSecondaryFixedDark = Color(0xFF001F29);
+  static const Color secondaryFixedDimDark = Color(0xFF89D0ED);
+  static const Color onSecondaryFixedVariantDark = Color(0xFF004D62);
+  static const Color tertiaryDark = Color(0xFFFBB907);
+  static const Color onTertiaryDark = Color(0xFFFFFFFF);
+  static const Color tertiaryContainerDark = Color(0xFF594400);
+  static const Color onTertiaryContainerDark = Color(0xFFFFDF95);
+  static const Color tertiaryFixedDark = Color(0xFFFFDF95);
+  static const Color onTertiaryFixedDark = Color(0xFF251A00);
+  static const Color tertiaryFixedDimDark = Color(0xFFE6C36C);
+  static const Color onTertiaryFixedVariantDark = Color(0xFF594400);
+  static const Color errorDark = Color(0xFFFFB4AB);
+  static const Color onErrorDark = Color(0xFF690005);
+  static const Color errorContainerDark = Color(0xFF93000A);
+  static const Color onErrorContainerDark = Color(0xFFFFDAD6);
+  static const Color outlineDark = Color(0xFF899294);
+  static const Color backgroundDark = Color(0xFF121318);
+  static const Color onBackgroundDark = Color(0xFFE3E1E9);
+  static const Color surfaceDark = Color(0xFF0E1415);
+  static const Color onSurfaceDark = Color(0xFFDEE3E5);
+  static const Color surfaceVariantDark = Color(0xFF3F484A);
+  static const Color onSurfaceVariantDark = Color(0xFFBFC8CA);
+  static const Color inverseSurfaceDark = Color(0xFFDEE3E5);
+  static const Color inverseOnSurfaceDark = Color(0xFF2B3133);
+  static const Color inversePrimaryDark = Color(0xFF4C5C92);
+  static const Color shadowDark = Color(0xFF000000);
+  static const Color surfaceTintDark = Color(0xFFB5C4FF);
+  static const Color outlineVariantDark = Color(0xFF3F484A);
+  static const Color scrimDark = Color(0xFF000000);
+  static const Color surfaceContainerHighestDark = Color(0xFF303637);
+  static const Color surfaceContainerHighDark = Color(0xFF252B2C);
+  static const Color surfaceContainerDark = Color(0xFF1B2122);
+  static const Color surfaceContainerLowDark = Color(0xFF171D1E);
+  static const Color surfaceContainerLowestDark = Color(0xFF090F10);
+  static const Color surfaceBrightDark = Color(0xFF343A3B);
+  static const Color surfaceDimDark = Color(0xFF0E1415);
+  static const Color primaryLight = Color(0xFF20419A);
+  static const Color onPrimaryLight = Color(0xFFFFFFFF);
+  static const Color primaryContainerLight = Color(0xFFE9ECF5);
+  static const Color onPrimaryContainerLight = Color(0xFF344479);
+  static const Color primaryFixedLight = Color(0xFFDCE1FF);
+  static const Color onPrimaryFixedLight = Color(0xFF02174B);
+  static const Color primaryDark = Color(0xFFFFFFFF);
+  static const Color onPrimaryFixedVariantLight = Color(0xFF344479);
+  static const Color secondaryLight = Color(0xFF5D74B1);
+  static const Color onSecondaryLight = Color(0xFFFFFFFF);
+  static const Color secondaryContainerLight = Color(0xFFE9ECF5);
+  static const Color onSecondaryContainerLight = Color(0xFF20419A);
+  static const Color secondaryFixedLight = Color(0xFFBAEAFF);
+  static const Color onSecondaryFixedLight = Color(0xFFBAEAFF);
+  static const Color secondaryFixedDimLight = Color(0xFF89D0ED);
+  static const Color onSecondaryFixedVariantLight = Color(0xFF004D62);
+  static const Color tertiaryLight = Color(0xFFFBB907);
+  static const Color onTertiaryLight = Color(0xFF20419A);
+  static const Color tertiaryContainerLight = Color(0xFFFFDF95);
+  static const Color onTertiaryContainerLight = Color(0xFF594400);
+  static const Color tertiaryFixedLight = Color(0xFFFFDF95);
+  static const Color onTertiaryFixedLight = Color(0xFF251A00);
+  static const Color tertiaryFixedDimLight = Color(0xFFE6C36C);
+  static const Color onTertiaryFixedVariantLight = Color(0xFF594400);
+  static const Color errorLight = Color(0xFFBA1A1A);
+  static const Color onErrorLight = Color(0xFFFFFFFF);
+  static const Color errorContainerLight = Color(0xFFFFDAD6);
+  static const Color onErrorContainerLight = Color(0xFF93000A);
+  static const Color outlineLight = Color(0xFF20419A);
+  static const Color backgroundLight = Color(0xFFFFFFFF);
+  static const Color onBackgroundLight = Color(0xFF20419A);
+  static const Color surfaceLight = Color(0xFFFFFFFF);
+  static const Color onSurfaceLight = Color(0xFF1D1B20);
+  static const Color surfaceVariantLight = Color(0xFFE9ECF5);
+  static const Color onSurfaceVariantLight = Color(0xFF20419A);
+  static const Color inverseSurfaceLight = Color(0xFF2B3133);
+  static const Color inverseOnSurfaceLight = Color(0xFFECF2F3);
+  static const Color inversePrimaryLight = Color(0xFFB5C4FF);
+  static const Color shadowLight = Color(0xFF000000);
+  static const Color surfaceTintLight = Color(0xFF4C5C92);
+  static const Color outlineVariantLight = Color(0xFFBFC8CA);
+  static const Color scrimLight = Color(0xFF000000);
+  static const Color surfaceContainerHighestLight = Color(0xFFDEE3E5);
+  static const Color surfaceContainerHighLight = Color(0xFFE3E9EA);
+  static const Color surfaceContainerLight = Color(0xFFE9EFF0);
+  static const Color surfaceContainerLowLight = Color(0xFFEFF5F6);
+  static const Color surfaceContainerLowestLight = Color(0xFFFFFFFF);
+  static const Color surfaceBrightLight = Color(0xFFF5F5F5);
+  static const Color surfaceDimLight = Color(0xFFD5DBDC);
+  static const TextStyle typeLabelMediumTablet = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeLabelLargeTablet = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeBodySmallTablet = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
+    letterSpacing: 0.4,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeBodyMediumTablet = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeBodyLargeTablet = TextStyle(
+    fontSize: 16.0,
+    height: 1.50,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeTitleSmallTablet = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeTitleMediumTablet = TextStyle(
+    fontSize: 16.0,
+    height: 1.38,
+    letterSpacing: 0.15,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeTitleLargeTablet = TextStyle(
+    fontSize: 22.0,
+    height: 1.36,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeHeadlineSmallTablet = TextStyle(
+    fontSize: 28.0,
+    height: 1.36,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeHeadlineMediumTablet = TextStyle(
+    fontSize: 35.0,
+    height: 1.37,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeHeadlineLargeTablet = TextStyle(
+    fontSize: 40.0,
+    height: 1.40,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeDisplaySmallTablet = TextStyle(
+    fontSize: 36.0,
+    height: 1.22,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeDisplayMediumTablet = TextStyle(
+    fontSize: 45.0,
+    height: 1.16,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeLabelSmallTablet = TextStyle(
+    fontSize: 11.0,
+    height: 1.45,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeDisplayLargeTablet = TextStyle(
+    fontSize: 57.0,
+    height: 1.12,
+    letterSpacing: -0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeLabelSmallMobile = TextStyle(
+    fontSize: 11.0,
+    height: 1.45,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeLabelMediumMobile = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeLabelLargeMobile = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeBodySmallMobile = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
+    letterSpacing: 0.4,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeBodyMediumMobile = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeBodyLargeMobile = TextStyle(
+    fontSize: 16.0,
+    height: 1.50,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeTitleSmallMobile = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeTitleMediumMobile = TextStyle(
+    fontSize: 16.0,
+    height: 1.38,
+    letterSpacing: 0.15,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeTitleLargeMobile = TextStyle(
+    fontSize: 16.0,
+    height: 1.38,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeHeadlineSmallMobile = TextStyle(
+    fontSize: 22.0,
+    height: 1.55,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeDisplayLargeDesktop = TextStyle(
+    fontSize: 57.0,
+    height: 1.12,
+    letterSpacing: -0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeDisplayMediumDesktop = TextStyle(
+    fontSize: 45.0,
+    height: 1.16,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeDisplaySmallDesktop = TextStyle(
+    fontSize: 36.0,
+    height: 1.22,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeHeadlineLargeDesktop = TextStyle(
+    fontSize: 40.0,
+    height: 1.40,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeHeadlineMediumDesktop = TextStyle(
+    fontSize: 35.0,
+    height: 1.37,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeHeadlineSmallDesktop = TextStyle(
+    fontSize: 28.0,
+    height: 1.36,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeTitleLargeDesktop = TextStyle(
+    fontSize: 22.0,
+    height: 1.36,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeTitleMediumDesktop = TextStyle(
+    fontSize: 16.0,
+    height: 1.38,
+    letterSpacing: 0.15,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeTitleSmallDesktop = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeBodyLargeDesktop = TextStyle(
+    fontSize: 16.0,
+    height: 1.50,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeBodyMediumDesktop = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeBodySmallDesktop = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
+    letterSpacing: 0.4,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeLabelLargeDesktop = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeLabelMediumDesktop = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeLabelSmallDesktop = TextStyle(
+    fontSize: 11.0,
+    height: 1.45,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeDisplayLargeMobile = TextStyle(
+    fontSize: 57.0,
+    height: 1.12,
+    letterSpacing: -0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeHeadlineMediumMobile = TextStyle(
+    fontSize: 28.0,
+    height: 1.36,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeDisplaySmallMobile = TextStyle(
+    fontSize: 36.0,
+    height: 1.22,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeHeadlineLargeMobile = TextStyle(
+    fontSize: 36.0,
+    height: 1.39,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle typeDisplayMediumMobile = TextStyle(
+    fontSize: 45.0,
+    height: 1.16,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const double spaceNoneSpacing = 0;
+  static const double space120Spacing = 120;
+  static const double space100Spacing = 100;
+  static const double space60Spacing = 60;
+  static const double space40Spacing = 40;
+  static const double space30Spacing = 30;
+  static const double space24Spacing = 24;
+  static const double space20Spacing = 20;
+  static const double space18Spacing = 18;
+  static const double space16Spacing = 16;
+  static const double space14Spacing = 14;
+  static const double space10Spacing = 10;
+  static const double space8Spacing = 8;
+  static const double space4Spacing = 4;
+  static const double cornerExtraExtraLargeCorner = 48;
+  static const double cornerExtraLargeIncreasedCorner = 32;
+  static const double cornerLargeIncreasedCorner = 20;
+  static const double cornerFullCorner = 1000;
+  static const double cornerExtraLargeCorner = 28;
+  static const double cornerLargeCorner = 15;
+  static const double cornerMediumCorner = 10;
+  static const double cornerSmallCorner = 8;
+  static const double cornerExtraSmallCorner = 4;
+  static const double cornerNoneCorner = 0;
+  static const double space12Spacing = 12;
+}
+
 // --- BuildContext extensions ---
 
 extension FigmaQ8ColorContext on BuildContext {

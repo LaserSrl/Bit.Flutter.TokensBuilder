@@ -12,6 +12,25 @@ class _CollectionData {
   _CollectionData(this.name, this.modeJsons);
 }
 
+class _TokenCollection {
+  final String prefix;
+  final String name;
+  final String type;
+  final String? variant;
+  final String value;
+
+  _TokenCollection({
+    required this.name,
+    required this.type,
+    required this.value,
+    this.variant,
+    this.prefix = '',
+  });
+
+  String get token => _toCamelCase('$prefix$name${variant ?? ''}');
+  String get flatToken => '  static const $type $token = $value;';
+}
+
 /// A [Builder] that reads Figma token JSON files and generates
 /// Dart ThemeExtension classes with typed values for each mode.
 ///
@@ -41,6 +60,9 @@ class FigmaTokenBuilder implements Builder {
       r'$lib$': ['$outDir/${_baseClass.toLowerCase()}.g.dart'],
     };
   }
+
+  // TODO: Global token list
+  final _allTokens = <_TokenCollection>[];
 
   @override
   Future<void> build(BuildStep buildStep) async {
@@ -105,6 +127,8 @@ class FigmaTokenBuilder implements Builder {
       _writeAccessorClass(buffer, collections);
     }
 
+    _writeAllTokenClass(buffer);
+
     // BuildContext extensions
     _writeContextExtensions(buffer, collections, isMultiCollection);
 
@@ -118,6 +142,24 @@ class FigmaTokenBuilder implements Builder {
       'FigmaTokenBuilder: Generated ${outputAsset.path} '
       '(${collections.length} collection(s))',
     );
+  }
+
+  void _writeAllTokenClass(StringBuffer buffer) {
+    if (_allTokens.isEmpty) return;
+
+    // Sort Tokens by type
+    _allTokens.sort((a, b) => a.type.compareTo(b.type));
+
+    final className = _baseClass;
+
+    buffer.writeln();
+    buffer.writeln('abstract class ${className}Tokens {');
+    for (var tk in _allTokens) {
+      buffer.writeln(tk.flatToken);
+    }
+
+    buffer.writeln('}');
+    buffer.writeln();
   }
 
   // ---------------------------------------------------------------------------
@@ -206,6 +248,16 @@ class FigmaTokenBuilder implements Builder {
       b.writeln('  static const ${_toCamelCase(modeName)} = $className(');
       for (final t in tokens.keys) {
         final value = _extractFlatTypeValue(json[t]!, t);
+        // Add token
+        _allTokens.add(
+          _TokenCollection(
+            name: t,
+            type: value.type,
+            value: value.value,
+            variant: _toPascalCase(modeName),
+            prefix: '',
+          ),
+        );
         b.writeln('    ${_toCamelCase(t)}: ${value.value},');
       }
       b.writeln('  );');
@@ -243,14 +295,13 @@ class FigmaTokenBuilder implements Builder {
           b.writeln('      $camel: Color.lerp($camel, other.$camel, t)!,');
           break;
         case 'String':
-          //b.writeln('      $camel: $camel + (other.$camel - $camel) * t,');
+          b.writeln('      $camel: $camel,');
           break;
         case 'TextStyle':
           b.writeln('      $camel: TextStyle.lerp($camel, other.$camel, t)!,');
           break;
         case 'double':
           b.writeln('      $camel: lerpDouble($camel, other.$camel, t)!,');
-          // b.writeln('      $camel: $camel + (other.$camel - $camel) * t,');
           break;
         default:
           break;
@@ -738,24 +789,6 @@ class FigmaTokenBuilder implements Builder {
     return fileName.split('.').first;
   }
 
-  String _toCamelCase(String s) {
-    final parts = s.split(RegExp(r'[-_]'));
-    if (parts.isEmpty) return s;
-    final buffer = StringBuffer();
-    for (var i = 0; i < parts.length; i++) {
-      final part = parts[i];
-      if (part.isEmpty) continue;
-      if (i == 0) {
-        buffer.write(part[0].toLowerCase());
-        if (part.length > 1) buffer.write(part.substring(1));
-      } else {
-        buffer.write(part[0].toUpperCase());
-        if (part.length > 1) buffer.write(part.substring(1));
-      }
-    }
-    return buffer.toString();
-  }
-
   String _toPascalCase(String s) {
     final parts = s.split(RegExp(r'[-_]'));
     if (parts.isEmpty) return s;
@@ -767,4 +800,22 @@ class FigmaTokenBuilder implements Builder {
     }
     return buffer.toString();
   }
+}
+
+String _toCamelCase(String s) {
+  final parts = s.split(RegExp(r'[-_]'));
+  if (parts.isEmpty) return s;
+  final buffer = StringBuffer();
+  for (var i = 0; i < parts.length; i++) {
+    final part = parts[i];
+    if (part.isEmpty) continue;
+    if (i == 0) {
+      buffer.write(part[0].toLowerCase());
+      if (part.length > 1) buffer.write(part.substring(1));
+    } else {
+      buffer.write(part[0].toUpperCase());
+      if (part.length > 1) buffer.write(part.substring(1));
+    }
+  }
+  return buffer.toString();
 }
