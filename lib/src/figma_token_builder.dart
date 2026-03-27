@@ -12,14 +12,14 @@ class _CollectionData {
   _CollectionData(this.name, this.modeJsons);
 }
 
-class _TokenCollection {
+class _Token {
   final String prefix;
   final String name;
   final String type;
   final String? variant;
   final String value;
 
-  _TokenCollection({
+  _Token({
     required this.name,
     required this.type,
     required this.value,
@@ -27,8 +27,10 @@ class _TokenCollection {
     this.prefix = '',
   });
 
+  String get camel => _toCamelCase(name);
   String get token => _toCamelCase('$prefix$name${variant ?? ''}');
   String get flatToken => '  static const $type $token = $value;';
+  String ref(String className) => '${className}Tokens.$token';
 }
 
 /// A [Builder] that reads Figma token JSON files and generates
@@ -62,7 +64,7 @@ class FigmaTokenBuilder implements Builder {
   }
 
   // TODO: Global token list
-  final _allTokens = <_TokenCollection>[];
+  final _allTokens = <_Token>[];
 
   @override
   Future<void> build(BuildStep buildStep) async {
@@ -248,17 +250,18 @@ class FigmaTokenBuilder implements Builder {
       b.writeln('  static const ${_toCamelCase(modeName)} = $className(');
       for (final t in tokens.keys) {
         final value = _extractFlatTypeValue(json[t]!, t);
-        // Add token
-        _allTokens.add(
-          _TokenCollection(
-            name: t,
-            type: value.type,
-            value: value.value,
-            variant: _toPascalCase(modeName),
-            prefix: '',
-          ),
+
+        final token = _Token(
+          name: t,
+          type: value.type,
+          value: value.value,
+          variant: _toPascalCase(modeName),
+          prefix: '',
         );
-        b.writeln('    ${_toCamelCase(t)}: ${value.value},');
+
+        // Add token
+        _allTokens.add(token);
+        b.writeln('    ${token.camel}: ${token.ref(_baseClass)},');
       }
       b.writeln('  );');
       b.writeln();
