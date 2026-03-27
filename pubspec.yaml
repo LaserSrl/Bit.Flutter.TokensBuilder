@@ -3,7 +3,7 @@ description: >-
   A build_runner code generator that converts Figma design token JSON files
   (W3C format) into type-safe Dart ThemeExtension classes with multi-mode
   presets, BuildContext extensions, and responsive theming support for Flutter.
-version: 0.0.3+2
+version: 1.0.0
 homepage: https://github.com/hautvfami/figma_tokens_builder
 repository: https://github.com/hautvfami/figma_tokens_builder
 issue_tracker: https://github.com/hautvfami/figma_tokens_builder/issues
