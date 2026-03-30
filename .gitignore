@@ -29,3 +29,5 @@ migrate_working_dir/
 .flutter-plugins
 .flutter-plugins-dependencies
 build/
+script/q8-design-tokens/node_modules/*
+script/q8-design-tokens/package-lock.json
