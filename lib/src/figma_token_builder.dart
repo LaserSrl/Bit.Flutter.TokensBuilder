@@ -703,6 +703,7 @@ class FigmaTokenBuilder implements Builder {
     final letterSpacing = json[r'letter-spacing'] as double?;
     final fontWeight = json[r'font-weight'] as int?;
     // TODO: gestire BOLD
+    // FontVariation
     final fontWeightEmphasized = json[r'font-weight-emphasized'] as int?;
     final fontFamily = json[r'font-family'] as String?;
 

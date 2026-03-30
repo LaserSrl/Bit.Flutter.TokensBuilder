@@ -5,4 +5,6 @@ npm install
 npm run build-tokens
 
 
-Spostare i JSON dove serve per gnereare i token lato Flutter
+Questo genererà i file necessari dentor la folder locale "build/"
+
+Spostare i JSON dove serve per generare i token lato Flutter
