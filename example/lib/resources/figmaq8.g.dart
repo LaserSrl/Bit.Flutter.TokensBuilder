@@ -6,6 +6,48 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+class FigmaQ8Breakpoints extends ThemeExtension<FigmaQ8Breakpoints> {
+  final double breakpoint;
+
+  const FigmaQ8Breakpoints({
+    required this.breakpoint,
+  });
+
+  static const desktop = FigmaQ8Breakpoints(
+    breakpoint: FigmaQ8Tokens.breakpointDesktop,
+  );
+
+  static const mobile = FigmaQ8Breakpoints(
+    breakpoint: FigmaQ8Tokens.breakpointMobile,
+  );
+
+  static const tablet = FigmaQ8Breakpoints(
+    breakpoint: FigmaQ8Tokens.breakpointTablet,
+  );
+
+  /// Retrieve the nearest [FigmaQ8Breakpoints] from the widget tree.
+  static FigmaQ8Breakpoints of(BuildContext context) {
+    return Theme.of(context).extension<FigmaQ8Breakpoints>()!;
+  }
+
+  @override
+  FigmaQ8Breakpoints copyWith({
+    double? breakpoint,
+  }) {
+    return FigmaQ8Breakpoints(
+      breakpoint: breakpoint ?? this.breakpoint,
+    );
+  }
+
+  @override
+  FigmaQ8Breakpoints lerp(covariant FigmaQ8Breakpoints? other, double t) {
+    if (other == null) return this;
+    return FigmaQ8Breakpoints(
+      breakpoint: lerpDouble(breakpoint, other.breakpoint, t)!,
+    );
+  }
+}
+
 class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
   final Color primary;
   final Color onPrimary;
@@ -56,6 +98,9 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
   final Color surfaceContainerLowest;
   final Color surfaceBright;
   final Color surfaceDim;
+  final Color white;
+  final Color black;
+  final Color sectionBackground;
 
   const FigmaQ8Color({
     required this.primary,
@@ -107,6 +152,9 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
     required this.surfaceContainerLowest,
     required this.surfaceBright,
     required this.surfaceDim,
+    required this.white,
+    required this.black,
+    required this.sectionBackground,
   });
 
   static const dark = FigmaQ8Color(
@@ -159,6 +207,9 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
     surfaceContainerLowest: FigmaQ8Tokens.surfaceContainerLowestDark,
     surfaceBright: FigmaQ8Tokens.surfaceBrightDark,
     surfaceDim: FigmaQ8Tokens.surfaceDimDark,
+    white: FigmaQ8Tokens.whiteDark,
+    black: FigmaQ8Tokens.blackDark,
+    sectionBackground: FigmaQ8Tokens.sectionBackgroundDark,
   );
 
   static const light = FigmaQ8Color(
@@ -211,6 +262,9 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
     surfaceContainerLowest: FigmaQ8Tokens.surfaceContainerLowestLight,
     surfaceBright: FigmaQ8Tokens.surfaceBrightLight,
     surfaceDim: FigmaQ8Tokens.surfaceDimLight,
+    white: FigmaQ8Tokens.whiteLight,
+    black: FigmaQ8Tokens.blackLight,
+    sectionBackground: FigmaQ8Tokens.sectionBackgroundLight,
   );
 
   /// Retrieve the nearest [FigmaQ8Color] from the widget tree.
@@ -269,6 +323,9 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
     Color? surfaceContainerLowest,
     Color? surfaceBright,
     Color? surfaceDim,
+    Color? white,
+    Color? black,
+    Color? sectionBackground,
   }) {
     return FigmaQ8Color(
       primary: primary ?? this.primary,
@@ -320,6 +377,9 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
       surfaceContainerLowest: surfaceContainerLowest ?? this.surfaceContainerLowest,
       surfaceBright: surfaceBright ?? this.surfaceBright,
       surfaceDim: surfaceDim ?? this.surfaceDim,
+      white: white ?? this.white,
+      black: black ?? this.black,
+      sectionBackground: sectionBackground ?? this.sectionBackground,
     );
   }
 
@@ -378,6 +438,9 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
       surfaceContainerLowest: Color.lerp(surfaceContainerLowest, other.surfaceContainerLowest, t)!,
       surfaceBright: Color.lerp(surfaceBright, other.surfaceBright, t)!,
       surfaceDim: Color.lerp(surfaceDim, other.surfaceDim, t)!,
+      white: Color.lerp(white, other.white, t)!,
+      black: Color.lerp(black, other.black, t)!,
+      sectionBackground: Color.lerp(sectionBackground, other.sectionBackground, t)!,
     );
   }
 }
@@ -467,6 +530,64 @@ class FigmaQ8Corners extends ThemeExtension<FigmaQ8Corners> {
       cornerExtraLargeIncreased:
           lerpDouble(cornerExtraLargeIncreased, other.cornerExtraLargeIncreased, t)!,
       cornerExtraExtraLarge: lerpDouble(cornerExtraExtraLarge, other.cornerExtraExtraLarge, t)!,
+    );
+  }
+}
+
+class FigmaQ8Grids extends ThemeExtension<FigmaQ8Grids> {
+  final double columns;
+  final double margin;
+  final double gutter;
+
+  const FigmaQ8Grids({
+    required this.columns,
+    required this.margin,
+    required this.gutter,
+  });
+
+  static const desktop = FigmaQ8Grids(
+    columns: FigmaQ8Tokens.columnsDesktop,
+    margin: FigmaQ8Tokens.marginDesktop,
+    gutter: FigmaQ8Tokens.gutterDesktop,
+  );
+
+  static const mobile = FigmaQ8Grids(
+    columns: FigmaQ8Tokens.columnsMobile,
+    margin: FigmaQ8Tokens.marginMobile,
+    gutter: FigmaQ8Tokens.gutterMobile,
+  );
+
+  static const tablet = FigmaQ8Grids(
+    columns: FigmaQ8Tokens.columnsTablet,
+    margin: FigmaQ8Tokens.marginTablet,
+    gutter: FigmaQ8Tokens.gutterTablet,
+  );
+
+  /// Retrieve the nearest [FigmaQ8Grids] from the widget tree.
+  static FigmaQ8Grids of(BuildContext context) {
+    return Theme.of(context).extension<FigmaQ8Grids>()!;
+  }
+
+  @override
+  FigmaQ8Grids copyWith({
+    double? columns,
+    double? margin,
+    double? gutter,
+  }) {
+    return FigmaQ8Grids(
+      columns: columns ?? this.columns,
+      margin: margin ?? this.margin,
+      gutter: gutter ?? this.gutter,
+    );
+  }
+
+  @override
+  FigmaQ8Grids lerp(covariant FigmaQ8Grids? other, double t) {
+    if (other == null) return this;
+    return FigmaQ8Grids(
+      columns: lerpDouble(columns, other.columns, t)!,
+      margin: lerpDouble(margin, other.margin, t)!,
+      gutter: lerpDouble(gutter, other.gutter, t)!,
     );
   }
 }
@@ -590,92 +711,92 @@ class FigmaQ8Spacings extends ThemeExtension<FigmaQ8Spacings> {
 }
 
 class FigmaQ8Typography extends ThemeExtension<FigmaQ8Typography> {
-  final TextStyle typeDisplayLarge;
-  final TextStyle typeDisplayMedium;
-  final TextStyle typeDisplaySmall;
-  final TextStyle typeHeadlineLarge;
-  final TextStyle typeHeadlineMedium;
-  final TextStyle typeHeadlineSmall;
-  final TextStyle typeTitleLarge;
-  final TextStyle typeTitleMedium;
-  final TextStyle typeTitleSmall;
-  final TextStyle typeBodyLarge;
-  final TextStyle typeBodyMedium;
-  final TextStyle typeBodySmall;
-  final TextStyle typeLabelLarge;
-  final TextStyle typeLabelMedium;
-  final TextStyle typeLabelSmall;
+  final TextStyle displayLarge;
+  final TextStyle displayMedium;
+  final TextStyle displaySmall;
+  final TextStyle headlineLarge;
+  final TextStyle headlineMedium;
+  final TextStyle headlineSmall;
+  final TextStyle titleLarge;
+  final TextStyle titleMedium;
+  final TextStyle titleSmall;
+  final TextStyle bodyLarge;
+  final TextStyle bodyMedium;
+  final TextStyle bodySmall;
+  final TextStyle labelLarge;
+  final TextStyle labelMedium;
+  final TextStyle labelSmall;
 
   const FigmaQ8Typography({
-    required this.typeDisplayLarge,
-    required this.typeDisplayMedium,
-    required this.typeDisplaySmall,
-    required this.typeHeadlineLarge,
-    required this.typeHeadlineMedium,
-    required this.typeHeadlineSmall,
-    required this.typeTitleLarge,
-    required this.typeTitleMedium,
-    required this.typeTitleSmall,
-    required this.typeBodyLarge,
-    required this.typeBodyMedium,
-    required this.typeBodySmall,
-    required this.typeLabelLarge,
-    required this.typeLabelMedium,
-    required this.typeLabelSmall,
+    required this.displayLarge,
+    required this.displayMedium,
+    required this.displaySmall,
+    required this.headlineLarge,
+    required this.headlineMedium,
+    required this.headlineSmall,
+    required this.titleLarge,
+    required this.titleMedium,
+    required this.titleSmall,
+    required this.bodyLarge,
+    required this.bodyMedium,
+    required this.bodySmall,
+    required this.labelLarge,
+    required this.labelMedium,
+    required this.labelSmall,
   });
 
   static const desktop = FigmaQ8Typography(
-    typeDisplayLarge: FigmaQ8Tokens.typeDisplayLargeDesktop,
-    typeDisplayMedium: FigmaQ8Tokens.typeDisplayMediumDesktop,
-    typeDisplaySmall: FigmaQ8Tokens.typeDisplaySmallDesktop,
-    typeHeadlineLarge: FigmaQ8Tokens.typeHeadlineLargeDesktop,
-    typeHeadlineMedium: FigmaQ8Tokens.typeHeadlineMediumDesktop,
-    typeHeadlineSmall: FigmaQ8Tokens.typeHeadlineSmallDesktop,
-    typeTitleLarge: FigmaQ8Tokens.typeTitleLargeDesktop,
-    typeTitleMedium: FigmaQ8Tokens.typeTitleMediumDesktop,
-    typeTitleSmall: FigmaQ8Tokens.typeTitleSmallDesktop,
-    typeBodyLarge: FigmaQ8Tokens.typeBodyLargeDesktop,
-    typeBodyMedium: FigmaQ8Tokens.typeBodyMediumDesktop,
-    typeBodySmall: FigmaQ8Tokens.typeBodySmallDesktop,
-    typeLabelLarge: FigmaQ8Tokens.typeLabelLargeDesktop,
-    typeLabelMedium: FigmaQ8Tokens.typeLabelMediumDesktop,
-    typeLabelSmall: FigmaQ8Tokens.typeLabelSmallDesktop,
+    displayLarge: FigmaQ8Tokens.displayLargeDesktop,
+    displayMedium: FigmaQ8Tokens.displayMediumDesktop,
+    displaySmall: FigmaQ8Tokens.displaySmallDesktop,
+    headlineLarge: FigmaQ8Tokens.headlineLargeDesktop,
+    headlineMedium: FigmaQ8Tokens.headlineMediumDesktop,
+    headlineSmall: FigmaQ8Tokens.headlineSmallDesktop,
+    titleLarge: FigmaQ8Tokens.titleLargeDesktop,
+    titleMedium: FigmaQ8Tokens.titleMediumDesktop,
+    titleSmall: FigmaQ8Tokens.titleSmallDesktop,
+    bodyLarge: FigmaQ8Tokens.bodyLargeDesktop,
+    bodyMedium: FigmaQ8Tokens.bodyMediumDesktop,
+    bodySmall: FigmaQ8Tokens.bodySmallDesktop,
+    labelLarge: FigmaQ8Tokens.labelLargeDesktop,
+    labelMedium: FigmaQ8Tokens.labelMediumDesktop,
+    labelSmall: FigmaQ8Tokens.labelSmallDesktop,
   );
 
   static const mobile = FigmaQ8Typography(
-    typeDisplayLarge: FigmaQ8Tokens.typeDisplayLargeMobile,
-    typeDisplayMedium: FigmaQ8Tokens.typeDisplayMediumMobile,
-    typeDisplaySmall: FigmaQ8Tokens.typeDisplaySmallMobile,
-    typeHeadlineLarge: FigmaQ8Tokens.typeHeadlineLargeMobile,
-    typeHeadlineMedium: FigmaQ8Tokens.typeHeadlineMediumMobile,
-    typeHeadlineSmall: FigmaQ8Tokens.typeHeadlineSmallMobile,
-    typeTitleLarge: FigmaQ8Tokens.typeTitleLargeMobile,
-    typeTitleMedium: FigmaQ8Tokens.typeTitleMediumMobile,
-    typeTitleSmall: FigmaQ8Tokens.typeTitleSmallMobile,
-    typeBodyLarge: FigmaQ8Tokens.typeBodyLargeMobile,
-    typeBodyMedium: FigmaQ8Tokens.typeBodyMediumMobile,
-    typeBodySmall: FigmaQ8Tokens.typeBodySmallMobile,
-    typeLabelLarge: FigmaQ8Tokens.typeLabelLargeMobile,
-    typeLabelMedium: FigmaQ8Tokens.typeLabelMediumMobile,
-    typeLabelSmall: FigmaQ8Tokens.typeLabelSmallMobile,
+    displayLarge: FigmaQ8Tokens.displayLargeMobile,
+    displayMedium: FigmaQ8Tokens.displayMediumMobile,
+    displaySmall: FigmaQ8Tokens.displaySmallMobile,
+    headlineLarge: FigmaQ8Tokens.headlineLargeMobile,
+    headlineMedium: FigmaQ8Tokens.headlineMediumMobile,
+    headlineSmall: FigmaQ8Tokens.headlineSmallMobile,
+    titleLarge: FigmaQ8Tokens.titleLargeMobile,
+    titleMedium: FigmaQ8Tokens.titleMediumMobile,
+    titleSmall: FigmaQ8Tokens.titleSmallMobile,
+    bodyLarge: FigmaQ8Tokens.bodyLargeMobile,
+    bodyMedium: FigmaQ8Tokens.bodyMediumMobile,
+    bodySmall: FigmaQ8Tokens.bodySmallMobile,
+    labelLarge: FigmaQ8Tokens.labelLargeMobile,
+    labelMedium: FigmaQ8Tokens.labelMediumMobile,
+    labelSmall: FigmaQ8Tokens.labelSmallMobile,
   );
 
   static const tablet = FigmaQ8Typography(
-    typeDisplayLarge: FigmaQ8Tokens.typeDisplayLargeTablet,
-    typeDisplayMedium: FigmaQ8Tokens.typeDisplayMediumTablet,
-    typeDisplaySmall: FigmaQ8Tokens.typeDisplaySmallTablet,
-    typeHeadlineLarge: FigmaQ8Tokens.typeHeadlineLargeTablet,
-    typeHeadlineMedium: FigmaQ8Tokens.typeHeadlineMediumTablet,
-    typeHeadlineSmall: FigmaQ8Tokens.typeHeadlineSmallTablet,
-    typeTitleLarge: FigmaQ8Tokens.typeTitleLargeTablet,
-    typeTitleMedium: FigmaQ8Tokens.typeTitleMediumTablet,
-    typeTitleSmall: FigmaQ8Tokens.typeTitleSmallTablet,
-    typeBodyLarge: FigmaQ8Tokens.typeBodyLargeTablet,
-    typeBodyMedium: FigmaQ8Tokens.typeBodyMediumTablet,
-    typeBodySmall: FigmaQ8Tokens.typeBodySmallTablet,
-    typeLabelLarge: FigmaQ8Tokens.typeLabelLargeTablet,
-    typeLabelMedium: FigmaQ8Tokens.typeLabelMediumTablet,
-    typeLabelSmall: FigmaQ8Tokens.typeLabelSmallTablet,
+    displayLarge: FigmaQ8Tokens.displayLargeTablet,
+    displayMedium: FigmaQ8Tokens.displayMediumTablet,
+    displaySmall: FigmaQ8Tokens.displaySmallTablet,
+    headlineLarge: FigmaQ8Tokens.headlineLargeTablet,
+    headlineMedium: FigmaQ8Tokens.headlineMediumTablet,
+    headlineSmall: FigmaQ8Tokens.headlineSmallTablet,
+    titleLarge: FigmaQ8Tokens.titleLargeTablet,
+    titleMedium: FigmaQ8Tokens.titleMediumTablet,
+    titleSmall: FigmaQ8Tokens.titleSmallTablet,
+    bodyLarge: FigmaQ8Tokens.bodyLargeTablet,
+    bodyMedium: FigmaQ8Tokens.bodyMediumTablet,
+    bodySmall: FigmaQ8Tokens.bodySmallTablet,
+    labelLarge: FigmaQ8Tokens.labelLargeTablet,
+    labelMedium: FigmaQ8Tokens.labelMediumTablet,
+    labelSmall: FigmaQ8Tokens.labelSmallTablet,
   );
 
   /// Retrieve the nearest [FigmaQ8Typography] from the widget tree.
@@ -685,38 +806,38 @@ class FigmaQ8Typography extends ThemeExtension<FigmaQ8Typography> {
 
   @override
   FigmaQ8Typography copyWith({
-    TextStyle? typeDisplayLarge,
-    TextStyle? typeDisplayMedium,
-    TextStyle? typeDisplaySmall,
-    TextStyle? typeHeadlineLarge,
-    TextStyle? typeHeadlineMedium,
-    TextStyle? typeHeadlineSmall,
-    TextStyle? typeTitleLarge,
-    TextStyle? typeTitleMedium,
-    TextStyle? typeTitleSmall,
-    TextStyle? typeBodyLarge,
-    TextStyle? typeBodyMedium,
-    TextStyle? typeBodySmall,
-    TextStyle? typeLabelLarge,
-    TextStyle? typeLabelMedium,
-    TextStyle? typeLabelSmall,
+    TextStyle? displayLarge,
+    TextStyle? displayMedium,
+    TextStyle? displaySmall,
+    TextStyle? headlineLarge,
+    TextStyle? headlineMedium,
+    TextStyle? headlineSmall,
+    TextStyle? titleLarge,
+    TextStyle? titleMedium,
+    TextStyle? titleSmall,
+    TextStyle? bodyLarge,
+    TextStyle? bodyMedium,
+    TextStyle? bodySmall,
+    TextStyle? labelLarge,
+    TextStyle? labelMedium,
+    TextStyle? labelSmall,
   }) {
     return FigmaQ8Typography(
-      typeDisplayLarge: typeDisplayLarge ?? this.typeDisplayLarge,
-      typeDisplayMedium: typeDisplayMedium ?? this.typeDisplayMedium,
-      typeDisplaySmall: typeDisplaySmall ?? this.typeDisplaySmall,
-      typeHeadlineLarge: typeHeadlineLarge ?? this.typeHeadlineLarge,
-      typeHeadlineMedium: typeHeadlineMedium ?? this.typeHeadlineMedium,
-      typeHeadlineSmall: typeHeadlineSmall ?? this.typeHeadlineSmall,
-      typeTitleLarge: typeTitleLarge ?? this.typeTitleLarge,
-      typeTitleMedium: typeTitleMedium ?? this.typeTitleMedium,
-      typeTitleSmall: typeTitleSmall ?? this.typeTitleSmall,
-      typeBodyLarge: typeBodyLarge ?? this.typeBodyLarge,
-      typeBodyMedium: typeBodyMedium ?? this.typeBodyMedium,
-      typeBodySmall: typeBodySmall ?? this.typeBodySmall,
-      typeLabelLarge: typeLabelLarge ?? this.typeLabelLarge,
-      typeLabelMedium: typeLabelMedium ?? this.typeLabelMedium,
-      typeLabelSmall: typeLabelSmall ?? this.typeLabelSmall,
+      displayLarge: displayLarge ?? this.displayLarge,
+      displayMedium: displayMedium ?? this.displayMedium,
+      displaySmall: displaySmall ?? this.displaySmall,
+      headlineLarge: headlineLarge ?? this.headlineLarge,
+      headlineMedium: headlineMedium ?? this.headlineMedium,
+      headlineSmall: headlineSmall ?? this.headlineSmall,
+      titleLarge: titleLarge ?? this.titleLarge,
+      titleMedium: titleMedium ?? this.titleMedium,
+      titleSmall: titleSmall ?? this.titleSmall,
+      bodyLarge: bodyLarge ?? this.bodyLarge,
+      bodyMedium: bodyMedium ?? this.bodyMedium,
+      bodySmall: bodySmall ?? this.bodySmall,
+      labelLarge: labelLarge ?? this.labelLarge,
+      labelMedium: labelMedium ?? this.labelMedium,
+      labelSmall: labelSmall ?? this.labelSmall,
     );
   }
 
@@ -724,23 +845,34 @@ class FigmaQ8Typography extends ThemeExtension<FigmaQ8Typography> {
   FigmaQ8Typography lerp(covariant FigmaQ8Typography? other, double t) {
     if (other == null) return this;
     return FigmaQ8Typography(
-      typeDisplayLarge: TextStyle.lerp(typeDisplayLarge, other.typeDisplayLarge, t)!,
-      typeDisplayMedium: TextStyle.lerp(typeDisplayMedium, other.typeDisplayMedium, t)!,
-      typeDisplaySmall: TextStyle.lerp(typeDisplaySmall, other.typeDisplaySmall, t)!,
-      typeHeadlineLarge: TextStyle.lerp(typeHeadlineLarge, other.typeHeadlineLarge, t)!,
-      typeHeadlineMedium: TextStyle.lerp(typeHeadlineMedium, other.typeHeadlineMedium, t)!,
-      typeHeadlineSmall: TextStyle.lerp(typeHeadlineSmall, other.typeHeadlineSmall, t)!,
-      typeTitleLarge: TextStyle.lerp(typeTitleLarge, other.typeTitleLarge, t)!,
-      typeTitleMedium: TextStyle.lerp(typeTitleMedium, other.typeTitleMedium, t)!,
-      typeTitleSmall: TextStyle.lerp(typeTitleSmall, other.typeTitleSmall, t)!,
-      typeBodyLarge: TextStyle.lerp(typeBodyLarge, other.typeBodyLarge, t)!,
-      typeBodyMedium: TextStyle.lerp(typeBodyMedium, other.typeBodyMedium, t)!,
-      typeBodySmall: TextStyle.lerp(typeBodySmall, other.typeBodySmall, t)!,
-      typeLabelLarge: TextStyle.lerp(typeLabelLarge, other.typeLabelLarge, t)!,
-      typeLabelMedium: TextStyle.lerp(typeLabelMedium, other.typeLabelMedium, t)!,
-      typeLabelSmall: TextStyle.lerp(typeLabelSmall, other.typeLabelSmall, t)!,
+      displayLarge: TextStyle.lerp(displayLarge, other.displayLarge, t)!,
+      displayMedium: TextStyle.lerp(displayMedium, other.displayMedium, t)!,
+      displaySmall: TextStyle.lerp(displaySmall, other.displaySmall, t)!,
+      headlineLarge: TextStyle.lerp(headlineLarge, other.headlineLarge, t)!,
+      headlineMedium: TextStyle.lerp(headlineMedium, other.headlineMedium, t)!,
+      headlineSmall: TextStyle.lerp(headlineSmall, other.headlineSmall, t)!,
+      titleLarge: TextStyle.lerp(titleLarge, other.titleLarge, t)!,
+      titleMedium: TextStyle.lerp(titleMedium, other.titleMedium, t)!,
+      titleSmall: TextStyle.lerp(titleSmall, other.titleSmall, t)!,
+      bodyLarge: TextStyle.lerp(bodyLarge, other.bodyLarge, t)!,
+      bodyMedium: TextStyle.lerp(bodyMedium, other.bodyMedium, t)!,
+      bodySmall: TextStyle.lerp(bodySmall, other.bodySmall, t)!,
+      labelLarge: TextStyle.lerp(labelLarge, other.labelLarge, t)!,
+      labelMedium: TextStyle.lerp(labelMedium, other.labelMedium, t)!,
+      labelSmall: TextStyle.lerp(labelSmall, other.labelSmall, t)!,
     );
   }
+}
+
+class _FigmaQ8BreakpointsAccessor {
+  const _FigmaQ8BreakpointsAccessor();
+
+  FigmaQ8Breakpoints get desktop => FigmaQ8Breakpoints.desktop;
+  FigmaQ8Breakpoints get mobile => FigmaQ8Breakpoints.mobile;
+  FigmaQ8Breakpoints get tablet => FigmaQ8Breakpoints.tablet;
+
+  /// Retrieve [FigmaQ8Breakpoints] from the nearest [Theme].
+  FigmaQ8Breakpoints of(BuildContext context) => FigmaQ8Breakpoints.of(context);
 }
 
 class _FigmaQ8ColorAccessor {
@@ -760,6 +892,17 @@ class _FigmaQ8CornersAccessor {
 
   /// Retrieve [FigmaQ8Corners] from the nearest [Theme].
   FigmaQ8Corners of(BuildContext context) => FigmaQ8Corners.of(context);
+}
+
+class _FigmaQ8GridsAccessor {
+  const _FigmaQ8GridsAccessor();
+
+  FigmaQ8Grids get desktop => FigmaQ8Grids.desktop;
+  FigmaQ8Grids get mobile => FigmaQ8Grids.mobile;
+  FigmaQ8Grids get tablet => FigmaQ8Grids.tablet;
+
+  /// Retrieve [FigmaQ8Grids] from the nearest [Theme].
+  FigmaQ8Grids of(BuildContext context) => FigmaQ8Grids.of(context);
 }
 
 class _FigmaQ8SpacingsAccessor {
@@ -786,8 +929,10 @@ class _FigmaQ8TypographyAccessor {
 class FigmaQ8 {
   FigmaQ8._();
 
+  static const breakpoints = _FigmaQ8BreakpointsAccessor();
   static const color = _FigmaQ8ColorAccessor();
   static const corners = _FigmaQ8CornersAccessor();
+  static const grids = _FigmaQ8GridsAccessor();
   static const spacings = _FigmaQ8SpacingsAccessor();
   static const typography = _FigmaQ8TypographyAccessor();
 
@@ -795,15 +940,21 @@ class FigmaQ8 {
 
   static List<ThemeExtension> get corner => [FigmaQ8Corners.corner];
   static List<ThemeExtension> get dark => [FigmaQ8Color.dark];
-  static List<ThemeExtension> get desktop => [FigmaQ8Typography.desktop];
+  static List<ThemeExtension> get desktop =>
+      [FigmaQ8Breakpoints.desktop, FigmaQ8Grids.desktop, FigmaQ8Typography.desktop];
   static List<ThemeExtension> get light => [FigmaQ8Color.light];
-  static List<ThemeExtension> get mobile => [FigmaQ8Typography.mobile];
+  static List<ThemeExtension> get mobile =>
+      [FigmaQ8Breakpoints.mobile, FigmaQ8Grids.mobile, FigmaQ8Typography.mobile];
   static List<ThemeExtension> get spacing => [FigmaQ8Spacings.spacing];
-  static List<ThemeExtension> get tablet => [FigmaQ8Typography.tablet];
+  static List<ThemeExtension> get tablet =>
+      [FigmaQ8Breakpoints.tablet, FigmaQ8Grids.tablet, FigmaQ8Typography.tablet];
 }
 
 abstract class FigmaQ8Tokens {
   static const Color primaryFixedDimLight = Color(0xFFB5C4FF);
+  static const Color surfaceBrightDark = Color(0xFF343A3B);
+  static const Color sectionBackgroundLight = Color(0xFFF5F5F5);
+  static const Color primaryDark = Color(0xFFFFFFFF);
   static const Color onPrimaryDark = Color(0xFF0B2469);
   static const Color primaryContainerDark = Color(0xFF0B2469);
   static const Color onPrimaryContainerDark = Color(0xFFDCE1FF);
@@ -850,15 +1001,18 @@ abstract class FigmaQ8Tokens {
   static const Color surfaceContainerDark = Color(0xFF1B2122);
   static const Color surfaceContainerLowDark = Color(0xFF171D1E);
   static const Color surfaceContainerLowestDark = Color(0xFF090F10);
-  static const Color surfaceBrightDark = Color(0xFF343A3B);
+  static const Color blackLight = Color(0xFF000000);
   static const Color surfaceDimDark = Color(0xFF0E1415);
+  static const Color whiteDark = Color(0xFFFFFFFF);
+  static const Color blackDark = Color(0xFF000000);
+  static const Color sectionBackgroundDark = Color(0xFFF5F5F5);
   static const Color primaryLight = Color(0xFF20419A);
   static const Color onPrimaryLight = Color(0xFFFFFFFF);
   static const Color primaryContainerLight = Color(0xFFE9ECF5);
   static const Color onPrimaryContainerLight = Color(0xFF344479);
   static const Color primaryFixedLight = Color(0xFFDCE1FF);
   static const Color onPrimaryFixedLight = Color(0xFF02174B);
-  static const Color primaryDark = Color(0xFFFFFFFF);
+  static const Color whiteLight = Color(0xFFFFFFFF);
   static const Color onPrimaryFixedVariantLight = Color(0xFF344479);
   static const Color secondaryLight = Color(0xFF5D74B1);
   static const Color onSecondaryLight = Color(0xFFFFFFFF);
@@ -895,343 +1049,352 @@ abstract class FigmaQ8Tokens {
   static const Color outlineVariantLight = Color(0xFFBFC8CA);
   static const Color scrimLight = Color(0xFF000000);
   static const Color surfaceContainerHighestLight = Color(0xFFDEE3E5);
-  static const Color surfaceContainerHighLight = Color(0xFFE3E9EA);
+  static const Color surfaceDimLight = Color(0xFFD5DBDC);
   static const Color surfaceContainerLight = Color(0xFFE9EFF0);
   static const Color surfaceContainerLowLight = Color(0xFFEFF5F6);
   static const Color surfaceContainerLowestLight = Color(0xFFFFFFFF);
   static const Color surfaceBrightLight = Color(0xFFF5F5F5);
-  static const Color surfaceDimLight = Color(0xFFD5DBDC);
-  static const TextStyle typeLabelMediumTablet = TextStyle(
+  static const Color surfaceContainerHighLight = Color(0xFFE3E9EA);
+  static const TextStyle labelSmallMobile = TextStyle(
+    fontSize: 11.0,
+    height: 1.45,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle labelMediumTablet = TextStyle(
     fontSize: 12.0,
     height: 1.33,
     letterSpacing: 0.5,
     fontWeight: FontWeight.w500,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeLabelLargeTablet = TextStyle(
+  static const TextStyle labelLargeTablet = TextStyle(
     fontSize: 14.0,
     height: 1.43,
     letterSpacing: 0.1,
     fontWeight: FontWeight.w500,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeBodySmallTablet = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.4,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeBodyMediumTablet = TextStyle(
+  static const TextStyle bodyMediumTablet = TextStyle(
     fontSize: 14.0,
     height: 1.43,
     letterSpacing: 0.25,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeBodyLargeTablet = TextStyle(
+  static const TextStyle bodyLargeTablet = TextStyle(
     fontSize: 16.0,
     height: 1.50,
     letterSpacing: 0.5,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeTitleSmallTablet = TextStyle(
+  static const TextStyle titleSmallTablet = TextStyle(
     fontSize: 14.0,
     height: 1.43,
     letterSpacing: 0.1,
     fontWeight: FontWeight.w500,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeTitleMediumTablet = TextStyle(
+  static const TextStyle titleMediumTablet = TextStyle(
     fontSize: 16.0,
     height: 1.38,
     letterSpacing: 0.15,
     fontWeight: FontWeight.w500,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeTitleLargeTablet = TextStyle(
+  static const TextStyle titleLargeTablet = TextStyle(
     fontSize: 22.0,
     height: 1.36,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeHeadlineSmallTablet = TextStyle(
+  static const TextStyle headlineSmallTablet = TextStyle(
     fontSize: 28.0,
     height: 1.36,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeHeadlineMediumTablet = TextStyle(
+  static const TextStyle headlineMediumTablet = TextStyle(
     fontSize: 35.0,
     height: 1.37,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeHeadlineLargeTablet = TextStyle(
+  static const TextStyle headlineLargeTablet = TextStyle(
     fontSize: 40.0,
     height: 1.40,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeDisplaySmallTablet = TextStyle(
+  static const TextStyle displaySmallTablet = TextStyle(
     fontSize: 36.0,
     height: 1.22,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeDisplayMediumTablet = TextStyle(
+  static const TextStyle displayMediumTablet = TextStyle(
     fontSize: 45.0,
     height: 1.16,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeLabelSmallTablet = TextStyle(
-    fontSize: 11.0,
-    height: 1.45,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeDisplayLargeTablet = TextStyle(
+  static const TextStyle displayLargeTablet = TextStyle(
     fontSize: 57.0,
     height: 1.12,
     letterSpacing: -0.25,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeLabelSmallMobile = TextStyle(
-    fontSize: 11.0,
-    height: 1.45,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeLabelMediumMobile = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeLabelLargeMobile = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeBodySmallMobile = TextStyle(
+  static const TextStyle bodySmallTablet = TextStyle(
     fontSize: 12.0,
     height: 1.33,
     letterSpacing: 0.4,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeBodyMediumMobile = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeBodyLargeMobile = TextStyle(
-    fontSize: 16.0,
-    height: 1.50,
+  static const TextStyle labelMediumMobile = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
     letterSpacing: 0.5,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeTitleSmallMobile = TextStyle(
+  static const TextStyle labelLargeMobile = TextStyle(
     fontSize: 14.0,
     height: 1.43,
     letterSpacing: 0.1,
     fontWeight: FontWeight.w500,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeTitleMediumMobile = TextStyle(
+  static const TextStyle bodySmallMobile = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
+    letterSpacing: 0.4,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle bodyMediumMobile = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle labelSmallTablet = TextStyle(
+    fontSize: 11.0,
+    height: 1.45,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle bodyLargeMobile = TextStyle(
+    fontSize: 16.0,
+    height: 1.50,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle titleSmallMobile = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle titleMediumMobile = TextStyle(
     fontSize: 16.0,
     height: 1.38,
     letterSpacing: 0.15,
     fontWeight: FontWeight.w500,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeTitleLargeMobile = TextStyle(
+  static const TextStyle titleLargeMobile = TextStyle(
     fontSize: 16.0,
     height: 1.38,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeHeadlineSmallMobile = TextStyle(
+  static const TextStyle headlineSmallMobile = TextStyle(
     fontSize: 22.0,
     height: 1.55,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeDisplayLargeDesktop = TextStyle(
-    fontSize: 57.0,
-    height: 1.12,
-    letterSpacing: -0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeDisplayMediumDesktop = TextStyle(
-    fontSize: 45.0,
-    height: 1.16,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeDisplaySmallDesktop = TextStyle(
-    fontSize: 36.0,
-    height: 1.22,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeHeadlineLargeDesktop = TextStyle(
-    fontSize: 40.0,
-    height: 1.40,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeHeadlineMediumDesktop = TextStyle(
-    fontSize: 35.0,
-    height: 1.37,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeHeadlineSmallDesktop = TextStyle(
+  static const TextStyle headlineMediumMobile = TextStyle(
     fontSize: 28.0,
     height: 1.36,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeTitleLargeDesktop = TextStyle(
-    fontSize: 22.0,
-    height: 1.36,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeTitleMediumDesktop = TextStyle(
-    fontSize: 16.0,
-    height: 1.38,
-    letterSpacing: 0.15,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeTitleSmallDesktop = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeBodyLargeDesktop = TextStyle(
-    fontSize: 16.0,
-    height: 1.50,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeBodyMediumDesktop = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeBodySmallDesktop = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.4,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeLabelLargeDesktop = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeLabelMediumDesktop = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeLabelSmallDesktop = TextStyle(
-    fontSize: 11.0,
-    height: 1.45,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeDisplayLargeMobile = TextStyle(
-    fontSize: 57.0,
-    height: 1.12,
-    letterSpacing: -0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeHeadlineMediumMobile = TextStyle(
-    fontSize: 28.0,
-    height: 1.36,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeDisplaySmallMobile = TextStyle(
-    fontSize: 36.0,
-    height: 1.22,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle typeHeadlineLargeMobile = TextStyle(
+  static const TextStyle headlineLargeMobile = TextStyle(
     fontSize: 36.0,
     height: 1.39,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const TextStyle typeDisplayMediumMobile = TextStyle(
+  static const TextStyle displaySmallMobile = TextStyle(
+    fontSize: 36.0,
+    height: 1.22,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle titleLargeDesktop = TextStyle(
+    fontSize: 22.0,
+    height: 1.36,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle displayLargeMobile = TextStyle(
+    fontSize: 57.0,
+    height: 1.12,
+    letterSpacing: -0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle labelSmallDesktop = TextStyle(
+    fontSize: 11.0,
+    height: 1.45,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle labelLargeDesktop = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle bodySmallDesktop = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
+    letterSpacing: 0.4,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle bodyMediumDesktop = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle bodyLargeDesktop = TextStyle(
+    fontSize: 16.0,
+    height: 1.50,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle titleSmallDesktop = TextStyle(
+    fontSize: 14.0,
+    height: 1.43,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle titleMediumDesktop = TextStyle(
+    fontSize: 16.0,
+    height: 1.38,
+    letterSpacing: 0.15,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle displayLargeDesktop = TextStyle(
+    fontSize: 57.0,
+    height: 1.12,
+    letterSpacing: -0.25,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle displayMediumDesktop = TextStyle(
     fontSize: 45.0,
     height: 1.16,
     letterSpacing: 0.0,
     fontWeight: FontWeight.w400,
     fontFamily: 'Manrope',
   );
-  static const double spaceNoneSpacing = 0;
-  static const double space120Spacing = 120;
+  static const TextStyle displaySmallDesktop = TextStyle(
+    fontSize: 36.0,
+    height: 1.22,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle headlineLargeDesktop = TextStyle(
+    fontSize: 40.0,
+    height: 1.40,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle headlineMediumDesktop = TextStyle(
+    fontSize: 35.0,
+    height: 1.37,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle headlineSmallDesktop = TextStyle(
+    fontSize: 28.0,
+    height: 1.36,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle displayMediumMobile = TextStyle(
+    fontSize: 45.0,
+    height: 1.16,
+    letterSpacing: 0.0,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Manrope',
+  );
+  static const TextStyle labelMediumDesktop = TextStyle(
+    fontSize: 12.0,
+    height: 1.33,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Manrope',
+  );
+  static const double space10Spacing = 10;
   static const double space100Spacing = 100;
   static const double space60Spacing = 60;
   static const double space40Spacing = 40;
   static const double space30Spacing = 30;
+  static const double columnsTablet = 8;
   static const double space24Spacing = 24;
   static const double space20Spacing = 20;
   static const double space18Spacing = 18;
   static const double space16Spacing = 16;
   static const double space14Spacing = 14;
-  static const double space10Spacing = 10;
+  static const double space12Spacing = 12;
+  static const double space120Spacing = 120;
   static const double space8Spacing = 8;
   static const double space4Spacing = 4;
+  static const double gutterTablet = 16;
+  static const double marginTablet = 32;
+  static const double gutterMobile = 16;
+  static const double marginMobile = 16;
+  static const double columnsMobile = 4;
+  static const double gutterDesktop = 24;
+  static const double marginDesktop = 200;
+  static const double columnsDesktop = 12;
   static const double cornerExtraExtraLargeCorner = 48;
-  static const double cornerExtraLargeIncreasedCorner = 32;
+  static const double spaceNoneSpacing = 0;
   static const double cornerLargeIncreasedCorner = 20;
   static const double cornerFullCorner = 1000;
   static const double cornerExtraLargeCorner = 28;
@@ -1240,10 +1403,17 @@ abstract class FigmaQ8Tokens {
   static const double cornerSmallCorner = 8;
   static const double cornerExtraSmallCorner = 4;
   static const double cornerNoneCorner = 0;
-  static const double space12Spacing = 12;
+  static const double breakpointDesktop = 1440;
+  static const double breakpointTablet = 768;
+  static const double breakpointMobile = 375;
+  static const double cornerExtraLargeIncreasedCorner = 32;
 }
 
 // --- BuildContext extensions ---
+
+extension FigmaQ8BreakpointsContext on BuildContext {
+  FigmaQ8Breakpoints get breakpoints => FigmaQ8Breakpoints.of(this);
+}
 
 extension FigmaQ8ColorContext on BuildContext {
   FigmaQ8Color get color => FigmaQ8Color.of(this);
@@ -1251,6 +1421,10 @@ extension FigmaQ8ColorContext on BuildContext {
 
 extension FigmaQ8CornersContext on BuildContext {
   FigmaQ8Corners get corners => FigmaQ8Corners.of(this);
+}
+
+extension FigmaQ8GridsContext on BuildContext {
+  FigmaQ8Grids get grids => FigmaQ8Grids.of(this);
 }
 
 extension FigmaQ8SpacingsContext on BuildContext {

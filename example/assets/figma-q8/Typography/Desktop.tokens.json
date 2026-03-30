@@ -1,164 +1,179 @@
 {
-  "type-display-large": {
+  "display-large": {
     "$type": "font",
     "$value": 57.0,
     "line-height": 64.0,
     "letter-spacing": -0.25,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-display-medium": {
+  "display-medium": {
     "$type": "font",
     "$value": 45.0,
     "line-height": 52.0,
     "letter-spacing": 0.0,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-display-small": {
+  "display-small": {
     "$type": "font",
     "$value": 36.0,
     "line-height": 44.0,
     "letter-spacing": 0.0,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-headline-large": {
+  "headline-large": {
     "$type": "font",
     "$value": 40.0,
     "line-height": 56.0,
     "letter-spacing": 0.0,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-headline-medium": {
+  "headline-medium": {
     "$type": "font",
     "$value": 35.0,
     "line-height": 48.0,
     "letter-spacing": 0.0,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-headline-small": {
+  "headline-small": {
     "$type": "font",
     "$value": 28.0,
     "line-height": 38.0,
     "letter-spacing": 0.0,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-title-large": {
+  "title-large": {
     "$type": "font",
     "$value": 22.0,
     "line-height": 30.0,
     "letter-spacing": 0.0,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-title-medium": {
+  "title-medium": {
     "$type": "font",
     "$value": 16.0,
     "line-height": 22.0,
     "letter-spacing": 0.15,
     "font-weight": 500,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-title-small": {
+  "title-small": {
     "$type": "font",
     "$value": 14.0,
     "line-height": 20.0,
     "letter-spacing": 0.1,
     "font-weight": 500,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-body-large": {
+  "body-large": {
     "$type": "font",
     "$value": 16.0,
     "line-height": 24.0,
     "letter-spacing": 0.5,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-body-medium": {
+  "body-medium": {
     "$type": "font",
     "$value": 14.0,
     "line-height": 20.0,
     "letter-spacing": 0.25,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-body-small": {
+  "body-small": {
     "$type": "font",
     "$value": 12.0,
     "line-height": 16.0,
     "letter-spacing": 0.4,
     "font-weight": 400,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-label-large": {
+  "label-large": {
     "$type": "font",
     "$value": 14.0,
     "line-height": 20.0,
     "letter-spacing": 0.1,
     "font-weight": 500,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-label-medium": {
+  "label-medium": {
     "$type": "font",
     "$value": 12.0,
     "line-height": 16.0,
     "letter-spacing": 0.5,
     "font-weight": 500,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"
     }
   },
-  "type-label-small": {
+  "label-small": {
     "$type": "font",
     "$value": 11.0,
     "line-height": 16.0,
     "letter-spacing": 0.5,
     "font-weight": 500,
+    "font-weight-emphasized": 600,
     "font-family": "Manrope",
     "$extensions": {
       "com.figma.modeName": "Desktop"

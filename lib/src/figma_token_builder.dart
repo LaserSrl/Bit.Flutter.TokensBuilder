@@ -702,6 +702,8 @@ class FigmaTokenBuilder implements Builder {
     final lineHeight = json[r'line-height'] as double?;
     final letterSpacing = json[r'letter-spacing'] as double?;
     final fontWeight = json[r'font-weight'] as int?;
+    // TODO: gestire BOLD
+    final fontWeightEmphasized = json[r'font-weight-emphasized'] as int?;
     final fontFamily = json[r'font-family'] as String?;
 
     if (fontSize != null) map['fontSize'] = fontSize.toString();

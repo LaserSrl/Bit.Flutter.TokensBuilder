@@ -342,6 +342,27 @@
       "com.figma.modeName": "Light"
     }
   },
+  "white": {
+    "$type": "color",
+    "$value": "#ffffff",
+    "$extensions": {
+      "com.figma.modeName": "Light"
+    }
+  },
+  "black": {
+    "$type": "color",
+    "$value": "#000000",
+    "$extensions": {
+      "com.figma.modeName": "Light"
+    }
+  },
+  "section-background": {
+    "$type": "color",
+    "$value": "#f5f5f5",
+    "$extensions": {
+      "com.figma.modeName": "Light"
+    }
+  },
   "$extensions": {
     "com.figma.modeName": "Light"
   }
