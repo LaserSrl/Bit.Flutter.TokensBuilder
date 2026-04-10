@@ -11,3 +11,4 @@ builders:
         input_dir: "assets/figma"
         output_dir: "lib/generated"
         base_class: "Figma"
+        package: "deda_material"

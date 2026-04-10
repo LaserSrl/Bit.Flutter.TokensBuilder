@@ -46,6 +46,7 @@ class FigmaQ8Breakpoints extends ThemeExtension<FigmaQ8Breakpoints> {
       breakpoint: lerpDouble(breakpoint, other.breakpoint, t)!,
     );
   }
+
 }
 
 class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
@@ -402,8 +403,7 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
       secondaryFixed: Color.lerp(secondaryFixed, other.secondaryFixed, t)!,
       onSecondaryFixed: Color.lerp(onSecondaryFixed, other.onSecondaryFixed, t)!,
       secondaryFixedDim: Color.lerp(secondaryFixedDim, other.secondaryFixedDim, t)!,
-      onSecondaryFixedVariant:
-          Color.lerp(onSecondaryFixedVariant, other.onSecondaryFixedVariant, t)!,
+      onSecondaryFixedVariant: Color.lerp(onSecondaryFixedVariant, other.onSecondaryFixedVariant, t)!,
       tertiary: Color.lerp(tertiary, other.tertiary, t)!,
       onTertiary: Color.lerp(onTertiary, other.onTertiary, t)!,
       tertiaryContainer: Color.lerp(tertiaryContainer, other.tertiaryContainer, t)!,
@@ -430,8 +430,7 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
       surfaceTint: Color.lerp(surfaceTint, other.surfaceTint, t)!,
       outlineVariant: Color.lerp(outlineVariant, other.outlineVariant, t)!,
       scrim: Color.lerp(scrim, other.scrim, t)!,
-      surfaceContainerHighest:
-          Color.lerp(surfaceContainerHighest, other.surfaceContainerHighest, t)!,
+      surfaceContainerHighest: Color.lerp(surfaceContainerHighest, other.surfaceContainerHighest, t)!,
       surfaceContainerHigh: Color.lerp(surfaceContainerHigh, other.surfaceContainerHigh, t)!,
       surfaceContainer: Color.lerp(surfaceContainer, other.surfaceContainer, t)!,
       surfaceContainerLow: Color.lerp(surfaceContainerLow, other.surfaceContainerLow, t)!,
@@ -443,6 +442,7 @@ class FigmaQ8Color extends ThemeExtension<FigmaQ8Color> {
       sectionBackground: Color.lerp(sectionBackground, other.sectionBackground, t)!,
     );
   }
+
 }
 
 class FigmaQ8Corners extends ThemeExtension<FigmaQ8Corners> {
@@ -527,11 +527,11 @@ class FigmaQ8Corners extends ThemeExtension<FigmaQ8Corners> {
       cornerExtraLarge: lerpDouble(cornerExtraLarge, other.cornerExtraLarge, t)!,
       cornerFull: lerpDouble(cornerFull, other.cornerFull, t)!,
       cornerLargeIncreased: lerpDouble(cornerLargeIncreased, other.cornerLargeIncreased, t)!,
-      cornerExtraLargeIncreased:
-          lerpDouble(cornerExtraLargeIncreased, other.cornerExtraLargeIncreased, t)!,
+      cornerExtraLargeIncreased: lerpDouble(cornerExtraLargeIncreased, other.cornerExtraLargeIncreased, t)!,
       cornerExtraExtraLarge: lerpDouble(cornerExtraExtraLarge, other.cornerExtraExtraLarge, t)!,
     );
   }
+
 }
 
 class FigmaQ8Grids extends ThemeExtension<FigmaQ8Grids> {
@@ -590,6 +590,7 @@ class FigmaQ8Grids extends ThemeExtension<FigmaQ8Grids> {
       gutter: lerpDouble(gutter, other.gutter, t)!,
     );
   }
+
 }
 
 class FigmaQ8Spacings extends ThemeExtension<FigmaQ8Spacings> {
@@ -708,6 +709,7 @@ class FigmaQ8Spacings extends ThemeExtension<FigmaQ8Spacings> {
       spaceNone: lerpDouble(spaceNone, other.spaceNone, t)!,
     );
   }
+
 }
 
 class FigmaQ8Typography extends ThemeExtension<FigmaQ8Typography> {
@@ -862,6 +864,7 @@ class FigmaQ8Typography extends ThemeExtension<FigmaQ8Typography> {
       labelSmall: TextStyle.lerp(labelSmall, other.labelSmall, t)!,
     );
   }
+
 }
 
 class _FigmaQ8BreakpointsAccessor {
@@ -940,15 +943,13 @@ class FigmaQ8 {
 
   static List<ThemeExtension> get corner => [FigmaQ8Corners.corner];
   static List<ThemeExtension> get dark => [FigmaQ8Color.dark];
-  static List<ThemeExtension> get desktop =>
-      [FigmaQ8Breakpoints.desktop, FigmaQ8Grids.desktop, FigmaQ8Typography.desktop];
+  static List<ThemeExtension> get desktop => [FigmaQ8Breakpoints.desktop, FigmaQ8Grids.desktop, FigmaQ8Typography.desktop];
   static List<ThemeExtension> get light => [FigmaQ8Color.light];
-  static List<ThemeExtension> get mobile =>
-      [FigmaQ8Breakpoints.mobile, FigmaQ8Grids.mobile, FigmaQ8Typography.mobile];
+  static List<ThemeExtension> get mobile => [FigmaQ8Breakpoints.mobile, FigmaQ8Grids.mobile, FigmaQ8Typography.mobile];
   static List<ThemeExtension> get spacing => [FigmaQ8Spacings.spacing];
-  static List<ThemeExtension> get tablet =>
-      [FigmaQ8Breakpoints.tablet, FigmaQ8Grids.tablet, FigmaQ8Typography.tablet];
+  static List<ThemeExtension> get tablet => [FigmaQ8Breakpoints.tablet, FigmaQ8Grids.tablet, FigmaQ8Typography.tablet];
 }
+
 
 abstract class FigmaQ8Tokens {
   static const Color primaryFixedDimLight = Color(0xFFB5C4FF);
@@ -1055,321 +1056,366 @@ abstract class FigmaQ8Tokens {
   static const Color surfaceContainerLowestLight = Color(0xFFFFFFFF);
   static const Color surfaceBrightLight = Color(0xFFF5F5F5);
   static const Color surfaceContainerHighLight = Color(0xFFE3E9EA);
-  static const TextStyle labelSmallMobile = TextStyle(
-    fontSize: 11.0,
-    height: 1.45,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle labelMediumTablet = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle labelLargeTablet = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle bodyMediumTablet = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle bodyLargeTablet = TextStyle(
-    fontSize: 16.0,
-    height: 1.50,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle titleSmallTablet = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle titleMediumTablet = TextStyle(
-    fontSize: 16.0,
-    height: 1.38,
-    letterSpacing: 0.15,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle titleLargeTablet = TextStyle(
-    fontSize: 22.0,
-    height: 1.36,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle headlineSmallTablet = TextStyle(
-    fontSize: 28.0,
-    height: 1.36,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle headlineMediumTablet = TextStyle(
-    fontSize: 35.0,
-    height: 1.37,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle headlineLargeTablet = TextStyle(
-    fontSize: 40.0,
-    height: 1.40,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle displaySmallTablet = TextStyle(
-    fontSize: 36.0,
-    height: 1.22,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle displayMediumTablet = TextStyle(
-    fontSize: 45.0,
-    height: 1.16,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle displayLargeTablet = TextStyle(
-    fontSize: 57.0,
-    height: 1.12,
-    letterSpacing: -0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle bodySmallTablet = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.4,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle labelMediumMobile = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle labelLargeMobile = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle bodySmallMobile = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.4,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle bodyMediumMobile = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle labelSmallTablet = TextStyle(
-    fontSize: 11.0,
-    height: 1.45,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle bodyLargeMobile = TextStyle(
-    fontSize: 16.0,
-    height: 1.50,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle titleSmallMobile = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle titleMediumMobile = TextStyle(
-    fontSize: 16.0,
-    height: 1.38,
-    letterSpacing: 0.15,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle titleLargeMobile = TextStyle(
-    fontSize: 16.0,
-    height: 1.38,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle headlineSmallMobile = TextStyle(
-    fontSize: 22.0,
-    height: 1.55,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle headlineMediumMobile = TextStyle(
-    fontSize: 28.0,
-    height: 1.36,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle headlineLargeMobile = TextStyle(
-    fontSize: 36.0,
-    height: 1.39,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle displaySmallMobile = TextStyle(
-    fontSize: 36.0,
-    height: 1.22,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle titleLargeDesktop = TextStyle(
-    fontSize: 22.0,
-    height: 1.36,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle displayLargeMobile = TextStyle(
-    fontSize: 57.0,
-    height: 1.12,
-    letterSpacing: -0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle labelSmallDesktop = TextStyle(
-    fontSize: 11.0,
-    height: 1.45,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle labelLargeDesktop = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle bodySmallDesktop = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.4,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle bodyMediumDesktop = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle bodyLargeDesktop = TextStyle(
-    fontSize: 16.0,
-    height: 1.50,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle titleSmallDesktop = TextStyle(
-    fontSize: 14.0,
-    height: 1.43,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle titleMediumDesktop = TextStyle(
-    fontSize: 16.0,
-    height: 1.38,
-    letterSpacing: 0.15,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle displayLargeDesktop = TextStyle(
-    fontSize: 57.0,
-    height: 1.12,
-    letterSpacing: -0.25,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle displayMediumDesktop = TextStyle(
-    fontSize: 45.0,
-    height: 1.16,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle displaySmallDesktop = TextStyle(
-    fontSize: 36.0,
-    height: 1.22,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle headlineLargeDesktop = TextStyle(
-    fontSize: 40.0,
-    height: 1.40,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle headlineMediumDesktop = TextStyle(
-    fontSize: 35.0,
-    height: 1.37,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle headlineSmallDesktop = TextStyle(
-    fontSize: 28.0,
-    height: 1.36,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle displayMediumMobile = TextStyle(
-    fontSize: 45.0,
-    height: 1.16,
-    letterSpacing: 0.0,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Manrope',
-  );
-  static const TextStyle labelMediumDesktop = TextStyle(
-    fontSize: 12.0,
-    height: 1.33,
-    letterSpacing: 0.5,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Manrope',
-  );
+  static const TextStyle labelSmallMobile = TextStyle(  fontSize: 11.0,
+  height: 1.45,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelMediumTablet = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelLargeTablet = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyMediumTablet = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyLargeTablet = TextStyle(  fontSize: 16.0,
+  height: 1.50,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleSmallTablet = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleMediumTablet = TextStyle(  fontSize: 16.0,
+  height: 1.38,
+  letterSpacing: 0.15,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleLargeTablet = TextStyle(  fontSize: 22.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineSmallTablet = TextStyle(  fontSize: 28.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineMediumTablet = TextStyle(  fontSize: 35.0,
+  height: 1.37,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineLargeTablet = TextStyle(  fontSize: 40.0,
+  height: 1.40,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displaySmallTablet = TextStyle(  fontSize: 36.0,
+  height: 1.22,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayMediumTablet = TextStyle(  fontSize: 45.0,
+  height: 1.16,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayLargeTablet = TextStyle(  fontSize: 57.0,
+  height: 1.12,
+  letterSpacing: -0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodySmallTablet = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.4,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelMediumMobile = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelLargeMobile = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodySmallMobile = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.4,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyMediumMobile = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelSmallTablet = TextStyle(  fontSize: 11.0,
+  height: 1.45,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyLargeMobile = TextStyle(  fontSize: 16.0,
+  height: 1.50,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleSmallMobile = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleMediumMobile = TextStyle(  fontSize: 16.0,
+  height: 1.38,
+  letterSpacing: 0.15,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleLargeMobile = TextStyle(  fontSize: 16.0,
+  height: 1.38,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineSmallMobile = TextStyle(  fontSize: 22.0,
+  height: 1.55,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineMediumMobile = TextStyle(  fontSize: 28.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineLargeMobile = TextStyle(  fontSize: 36.0,
+  height: 1.39,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displaySmallMobile = TextStyle(  fontSize: 36.0,
+  height: 1.22,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleLargeDesktop = TextStyle(  fontSize: 22.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayLargeMobile = TextStyle(  fontSize: 57.0,
+  height: 1.12,
+  letterSpacing: -0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelSmallDesktop = TextStyle(  fontSize: 11.0,
+  height: 1.45,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelLargeDesktop = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodySmallDesktop = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.4,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyMediumDesktop = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyLargeDesktop = TextStyle(  fontSize: 16.0,
+  height: 1.50,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleSmallDesktop = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleMediumDesktop = TextStyle(  fontSize: 16.0,
+  height: 1.38,
+  letterSpacing: 0.15,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayLargeDesktop = TextStyle(  fontSize: 57.0,
+  height: 1.12,
+  letterSpacing: -0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayMediumDesktop = TextStyle(  fontSize: 45.0,
+  height: 1.16,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displaySmallDesktop = TextStyle(  fontSize: 36.0,
+  height: 1.22,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineLargeDesktop = TextStyle(  fontSize: 40.0,
+  height: 1.40,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineMediumDesktop = TextStyle(  fontSize: 35.0,
+  height: 1.37,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineSmallDesktop = TextStyle(  fontSize: 28.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayMediumMobile = TextStyle(  fontSize: 45.0,
+  height: 1.16,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelMediumDesktop = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
   static const double space10Spacing = 10;
   static const double space100Spacing = 100;
   static const double space60Spacing = 60;
@@ -1434,3 +1480,4 @@ extension FigmaQ8SpacingsContext on BuildContext {
 extension FigmaQ8TypographyContext on BuildContext {
   FigmaQ8Typography get typography => FigmaQ8Typography.of(this);
 }
+

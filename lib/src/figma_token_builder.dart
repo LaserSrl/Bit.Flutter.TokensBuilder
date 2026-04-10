@@ -51,6 +51,7 @@ class FigmaTokenBuilder implements Builder {
   String get _inputDir => options.config['input_dir'] as String? ?? 'assets/figma';
   String get _outputDir => options.config['output_dir'] as String? ?? 'lib/generated';
   String get _baseClass => options.config['base_class'] as String? ?? 'Figma';
+  String get _packageName => options.config['package'] as String? ?? '';
 
   @override
   Map<String, List<String>> get buildExtensions {
@@ -706,6 +707,7 @@ class FigmaTokenBuilder implements Builder {
     // FontVariation
     final fontWeightEmphasized = json[r'font-weight-emphasized'] as int?;
     final fontFamily = json[r'font-family'] as String?;
+    final package = _packageName;
 
     if (fontSize != null) map['fontSize'] = fontSize.toString();
     // Flutter is [fontsize * height = lineheight]
@@ -719,6 +721,7 @@ class FigmaTokenBuilder implements Builder {
       map['fontWeight'] = 'FontWeight.w$fontWeight';
     }
     if (fontFamily != null) map['fontFamily'] = "'$fontFamily'";
+    if( package.isNotEmpty) map['package'] = "'$package'";
 
     StringBuffer buf = StringBuffer('TextStyle(');
     for (var key in map.keys) {
