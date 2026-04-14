@@ -3,7 +3,7 @@ targets:
     builders:
       figma_tokens_builder|figma_token_builder:
         options:
-          input_dir: "assets/figma-q8"
+          input_dir: "assets/figma"
           output_dir: "lib/resources"
-          base_class: "FigmaQ8"
+          base_class: "Figma"
           package: "example"
