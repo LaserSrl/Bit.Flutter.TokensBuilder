@@ -1,0 +1,26 @@
+{
+  "columns": {
+    "$type": "number",
+    "$value": 8,
+    "$extensions": {
+      "com.figma.modeName": "Tablet"
+    }
+  },
+  "margin": {
+    "$type": "number",
+    "$value": 32,
+    "$extensions": {
+      "com.figma.modeName": "Tablet"
+    }
+  },
+  "gutter": {
+    "$type": "number",
+    "$value": 24,
+    "$extensions": {
+      "com.figma.modeName": "Tablet"
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Tablet"
+  }
+}

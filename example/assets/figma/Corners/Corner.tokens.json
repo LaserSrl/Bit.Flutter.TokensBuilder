@@ -1,0 +1,75 @@
+{
+  "corner-none": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "corner-extra-small": {
+    "$type": "number",
+    "$value": 4,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "corner-small": {
+    "$type": "number",
+    "$value": 8,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "corner-medium": {
+    "$type": "number",
+    "$value": 10,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "corner-large": {
+    "$type": "number",
+    "$value": 15,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "corner-extra-large": {
+    "$type": "number",
+    "$value": 28,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "corner-full": {
+    "$type": "number",
+    "$value": 1000,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "corner-large-increased": {
+    "$type": "number",
+    "$value": 20,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "corner-extra-large-increased": {
+    "$type": "number",
+    "$value": 32,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "corner-extra-extra-large": {
+    "$type": "number",
+    "$value": 48,
+    "$extensions": {
+      "com.figma.modeName": "Corner"
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Corner"
+  }
+}

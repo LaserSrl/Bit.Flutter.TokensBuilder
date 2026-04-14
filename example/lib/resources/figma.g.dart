@@ -3,602 +3,1544 @@
 
 // ignore_for_file: library_private_types_in_public_api, camel_case_types
 
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class FigmaAvata extends ThemeExtension<FigmaAvata> {
-  final double avataCompact;
-  final double avataDefault;
-  final double avataCard;
-  final double avataProfile;
-  final double avataHero;
+class FigmaBreakpoints extends ThemeExtension<FigmaBreakpoints> {
+  final double breakpoint;
 
-  const FigmaAvata({
-    required this.avataCompact,
-    required this.avataDefault,
-    required this.avataCard,
-    required this.avataProfile,
-    required this.avataHero,
+  const FigmaBreakpoints({
+    required this.breakpoint,
   });
 
-  static const desktop = FigmaAvata(
-    avataCompact: 32.0,
-    avataDefault: 48.0,
-    avataCard: 64.0,
-    avataProfile: 80.0,
-    avataHero: 96.0,
+  static const desktop = FigmaBreakpoints(
+    breakpoint: FigmaTokens.breakpointDesktop,
   );
 
-  static const mobile = FigmaAvata(
-    avataCompact: 32.0,
-    avataDefault: 48.0,
-    avataCard: 48.0,
-    avataProfile: 64.0,
-    avataHero: 96.0,
+  static const mobile = FigmaBreakpoints(
+    breakpoint: FigmaTokens.breakpointMobile,
   );
 
-  static const tablet = FigmaAvata(
-    avataCompact: 32.0,
-    avataDefault: 48.0,
-    avataCard: 64.0,
-    avataProfile: 80.0,
-    avataHero: 96.0,
+  static const tablet = FigmaBreakpoints(
+    breakpoint: FigmaTokens.breakpointTablet,
   );
 
-  /// Retrieve the nearest [FigmaAvata] from the widget tree.
-  static FigmaAvata of(BuildContext context) {
-    return Theme.of(context).extension<FigmaAvata>()!;
+  /// Retrieve the nearest [FigmaBreakpoints] from the widget tree.
+  static FigmaBreakpoints of(BuildContext context) {
+    return Theme.of(context).extension<FigmaBreakpoints>()!;
   }
 
   @override
-  FigmaAvata copyWith({
-    double? avataCompact,
-    double? avataDefault,
-    double? avataCard,
-    double? avataProfile,
-    double? avataHero,
+  FigmaBreakpoints copyWith({
+    double? breakpoint,
   }) {
-    return FigmaAvata(
-      avataCompact: avataCompact ?? this.avataCompact,
-      avataDefault: avataDefault ?? this.avataDefault,
-      avataCard: avataCard ?? this.avataCard,
-      avataProfile: avataProfile ?? this.avataProfile,
-      avataHero: avataHero ?? this.avataHero,
+    return FigmaBreakpoints(
+      breakpoint: breakpoint ?? this.breakpoint,
     );
   }
 
   @override
-  FigmaAvata lerp(covariant FigmaAvata? other, double t) {
+  FigmaBreakpoints lerp(covariant FigmaBreakpoints? other, double t) {
     if (other == null) return this;
-    return FigmaAvata(
-      avataCompact: avataCompact + (other.avataCompact - avataCompact) * t,
-      avataDefault: avataDefault + (other.avataDefault - avataDefault) * t,
-      avataCard: avataCard + (other.avataCard - avataCard) * t,
-      avataProfile: avataProfile + (other.avataProfile - avataProfile) * t,
-      avataHero: avataHero + (other.avataHero - avataHero) * t,
+    return FigmaBreakpoints(
+      breakpoint: lerpDouble(breakpoint, other.breakpoint, t)!,
     );
   }
 
-  @override
-  int get hashCode {
-    return Object.hash(
-      avataCompact,
-      avataDefault,
-      avataCard,
-      avataProfile,
-      avataHero,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! FigmaAvata) return false;
-    return avataCompact == other.avataCompact && avataDefault == other.avataDefault && avataCard == other.avataCard && avataProfile == other.avataProfile && avataHero == other.avataHero;
-  }
 }
 
-class FigmaIcon extends ThemeExtension<FigmaIcon> {
-  final double icoCompact;
-  final double icoDefault;
-  final double icoLarge;
-  final double icoHighlight;
-  final double icoStatus;
-  final double icoHerohero;
+class FigmaColor extends ThemeExtension<FigmaColor> {
+  final Color primary;
+  final Color onPrimary;
+  final Color primaryContainer;
+  final Color onPrimaryContainer;
+  final Color primaryFixed;
+  final Color onPrimaryFixed;
+  final Color primaryFixedDim;
+  final Color onPrimaryFixedVariant;
+  final Color secondary;
+  final Color onSecondary;
+  final Color secondaryContainer;
+  final Color onSecondaryContainer;
+  final Color secondaryFixed;
+  final Color onSecondaryFixed;
+  final Color secondaryFixedDim;
+  final Color onSecondaryFixedVariant;
+  final Color tertiary;
+  final Color onTertiary;
+  final Color tertiaryContainer;
+  final Color onTertiaryContainer;
+  final Color tertiaryFixed;
+  final Color onTertiaryFixed;
+  final Color tertiaryFixedDim;
+  final Color onTertiaryFixedVariant;
+  final Color error;
+  final Color onError;
+  final Color errorContainer;
+  final Color onErrorContainer;
+  final Color outline;
+  final Color background;
+  final Color onBackground;
+  final Color surface;
+  final Color onSurface;
+  final Color surfaceVariant;
+  final Color onSurfaceVariant;
+  final Color inverseSurface;
+  final Color inverseOnSurface;
+  final Color inversePrimary;
+  final Color shadow;
+  final Color surfaceTint;
+  final Color outlineVariant;
+  final Color scrim;
+  final Color surfaceContainerHighest;
+  final Color surfaceContainerHigh;
+  final Color surfaceContainer;
+  final Color surfaceContainerLow;
+  final Color surfaceContainerLowest;
+  final Color surfaceBright;
+  final Color surfaceDim;
+  final Color primaryHovered;
+  final Color success;
+  final Color onSuccess;
+  final Color warning;
+  final Color onWarning;
+  final Color info;
+  final Color onInfo;
+  final Color white;
+  final Color black;
+  final Color sectionBackground;
 
-  const FigmaIcon({
-    required this.icoCompact,
-    required this.icoDefault,
-    required this.icoLarge,
-    required this.icoHighlight,
-    required this.icoStatus,
-    required this.icoHerohero,
+  const FigmaColor({
+    required this.primary,
+    required this.onPrimary,
+    required this.primaryContainer,
+    required this.onPrimaryContainer,
+    required this.primaryFixed,
+    required this.onPrimaryFixed,
+    required this.primaryFixedDim,
+    required this.onPrimaryFixedVariant,
+    required this.secondary,
+    required this.onSecondary,
+    required this.secondaryContainer,
+    required this.onSecondaryContainer,
+    required this.secondaryFixed,
+    required this.onSecondaryFixed,
+    required this.secondaryFixedDim,
+    required this.onSecondaryFixedVariant,
+    required this.tertiary,
+    required this.onTertiary,
+    required this.tertiaryContainer,
+    required this.onTertiaryContainer,
+    required this.tertiaryFixed,
+    required this.onTertiaryFixed,
+    required this.tertiaryFixedDim,
+    required this.onTertiaryFixedVariant,
+    required this.error,
+    required this.onError,
+    required this.errorContainer,
+    required this.onErrorContainer,
+    required this.outline,
+    required this.background,
+    required this.onBackground,
+    required this.surface,
+    required this.onSurface,
+    required this.surfaceVariant,
+    required this.onSurfaceVariant,
+    required this.inverseSurface,
+    required this.inverseOnSurface,
+    required this.inversePrimary,
+    required this.shadow,
+    required this.surfaceTint,
+    required this.outlineVariant,
+    required this.scrim,
+    required this.surfaceContainerHighest,
+    required this.surfaceContainerHigh,
+    required this.surfaceContainer,
+    required this.surfaceContainerLow,
+    required this.surfaceContainerLowest,
+    required this.surfaceBright,
+    required this.surfaceDim,
+    required this.primaryHovered,
+    required this.success,
+    required this.onSuccess,
+    required this.warning,
+    required this.onWarning,
+    required this.info,
+    required this.onInfo,
+    required this.white,
+    required this.black,
+    required this.sectionBackground,
   });
 
-  static const desktop = FigmaIcon(
-    icoCompact: 24.0,
-    icoDefault: 32.0,
-    icoLarge: 64.0,
-    icoHighlight: 64.0,
-    icoStatus: 80.0,
-    icoHerohero: 96.0,
+  static const dark = FigmaColor(
+    primary: FigmaTokens.primaryDark,
+    onPrimary: FigmaTokens.onPrimaryDark,
+    primaryContainer: FigmaTokens.primaryContainerDark,
+    onPrimaryContainer: FigmaTokens.onPrimaryContainerDark,
+    primaryFixed: FigmaTokens.primaryFixedDark,
+    onPrimaryFixed: FigmaTokens.onPrimaryFixedDark,
+    primaryFixedDim: FigmaTokens.primaryFixedDimDark,
+    onPrimaryFixedVariant: FigmaTokens.onPrimaryFixedVariantDark,
+    secondary: FigmaTokens.secondaryDark,
+    onSecondary: FigmaTokens.onSecondaryDark,
+    secondaryContainer: FigmaTokens.secondaryContainerDark,
+    onSecondaryContainer: FigmaTokens.onSecondaryContainerDark,
+    secondaryFixed: FigmaTokens.secondaryFixedDark,
+    onSecondaryFixed: FigmaTokens.onSecondaryFixedDark,
+    secondaryFixedDim: FigmaTokens.secondaryFixedDimDark,
+    onSecondaryFixedVariant: FigmaTokens.onSecondaryFixedVariantDark,
+    tertiary: FigmaTokens.tertiaryDark,
+    onTertiary: FigmaTokens.onTertiaryDark,
+    tertiaryContainer: FigmaTokens.tertiaryContainerDark,
+    onTertiaryContainer: FigmaTokens.onTertiaryContainerDark,
+    tertiaryFixed: FigmaTokens.tertiaryFixedDark,
+    onTertiaryFixed: FigmaTokens.onTertiaryFixedDark,
+    tertiaryFixedDim: FigmaTokens.tertiaryFixedDimDark,
+    onTertiaryFixedVariant: FigmaTokens.onTertiaryFixedVariantDark,
+    error: FigmaTokens.errorDark,
+    onError: FigmaTokens.onErrorDark,
+    errorContainer: FigmaTokens.errorContainerDark,
+    onErrorContainer: FigmaTokens.onErrorContainerDark,
+    outline: FigmaTokens.outlineDark,
+    background: FigmaTokens.backgroundDark,
+    onBackground: FigmaTokens.onBackgroundDark,
+    surface: FigmaTokens.surfaceDark,
+    onSurface: FigmaTokens.onSurfaceDark,
+    surfaceVariant: FigmaTokens.surfaceVariantDark,
+    onSurfaceVariant: FigmaTokens.onSurfaceVariantDark,
+    inverseSurface: FigmaTokens.inverseSurfaceDark,
+    inverseOnSurface: FigmaTokens.inverseOnSurfaceDark,
+    inversePrimary: FigmaTokens.inversePrimaryDark,
+    shadow: FigmaTokens.shadowDark,
+    surfaceTint: FigmaTokens.surfaceTintDark,
+    outlineVariant: FigmaTokens.outlineVariantDark,
+    scrim: FigmaTokens.scrimDark,
+    surfaceContainerHighest: FigmaTokens.surfaceContainerHighestDark,
+    surfaceContainerHigh: FigmaTokens.surfaceContainerHighDark,
+    surfaceContainer: FigmaTokens.surfaceContainerDark,
+    surfaceContainerLow: FigmaTokens.surfaceContainerLowDark,
+    surfaceContainerLowest: FigmaTokens.surfaceContainerLowestDark,
+    surfaceBright: FigmaTokens.surfaceBrightDark,
+    surfaceDim: FigmaTokens.surfaceDimDark,
+    primaryHovered: FigmaTokens.primaryHoveredDark,
+    success: FigmaTokens.successDark,
+    onSuccess: FigmaTokens.onSuccessDark,
+    warning: FigmaTokens.warningDark,
+    onWarning: FigmaTokens.onWarningDark,
+    info: FigmaTokens.infoDark,
+    onInfo: FigmaTokens.onInfoDark,
+    white: FigmaTokens.whiteDark,
+    black: FigmaTokens.blackDark,
+    sectionBackground: FigmaTokens.sectionBackgroundDark,
   );
 
-  static const mobile = FigmaIcon(
-    icoCompact: 20.0,
-    icoDefault: 24.0,
-    icoLarge: 32.0,
-    icoHighlight: 48.0,
-    icoStatus: 64.0,
-    icoHerohero: 80.0,
+  static const light = FigmaColor(
+    primary: FigmaTokens.primaryLight,
+    onPrimary: FigmaTokens.onPrimaryLight,
+    primaryContainer: FigmaTokens.primaryContainerLight,
+    onPrimaryContainer: FigmaTokens.onPrimaryContainerLight,
+    primaryFixed: FigmaTokens.primaryFixedLight,
+    onPrimaryFixed: FigmaTokens.onPrimaryFixedLight,
+    primaryFixedDim: FigmaTokens.primaryFixedDimLight,
+    onPrimaryFixedVariant: FigmaTokens.onPrimaryFixedVariantLight,
+    secondary: FigmaTokens.secondaryLight,
+    onSecondary: FigmaTokens.onSecondaryLight,
+    secondaryContainer: FigmaTokens.secondaryContainerLight,
+    onSecondaryContainer: FigmaTokens.onSecondaryContainerLight,
+    secondaryFixed: FigmaTokens.secondaryFixedLight,
+    onSecondaryFixed: FigmaTokens.onSecondaryFixedLight,
+    secondaryFixedDim: FigmaTokens.secondaryFixedDimLight,
+    onSecondaryFixedVariant: FigmaTokens.onSecondaryFixedVariantLight,
+    tertiary: FigmaTokens.tertiaryLight,
+    onTertiary: FigmaTokens.onTertiaryLight,
+    tertiaryContainer: FigmaTokens.tertiaryContainerLight,
+    onTertiaryContainer: FigmaTokens.onTertiaryContainerLight,
+    tertiaryFixed: FigmaTokens.tertiaryFixedLight,
+    onTertiaryFixed: FigmaTokens.onTertiaryFixedLight,
+    tertiaryFixedDim: FigmaTokens.tertiaryFixedDimLight,
+    onTertiaryFixedVariant: FigmaTokens.onTertiaryFixedVariantLight,
+    error: FigmaTokens.errorLight,
+    onError: FigmaTokens.onErrorLight,
+    errorContainer: FigmaTokens.errorContainerLight,
+    onErrorContainer: FigmaTokens.onErrorContainerLight,
+    outline: FigmaTokens.outlineLight,
+    background: FigmaTokens.backgroundLight,
+    onBackground: FigmaTokens.onBackgroundLight,
+    surface: FigmaTokens.surfaceLight,
+    onSurface: FigmaTokens.onSurfaceLight,
+    surfaceVariant: FigmaTokens.surfaceVariantLight,
+    onSurfaceVariant: FigmaTokens.onSurfaceVariantLight,
+    inverseSurface: FigmaTokens.inverseSurfaceLight,
+    inverseOnSurface: FigmaTokens.inverseOnSurfaceLight,
+    inversePrimary: FigmaTokens.inversePrimaryLight,
+    shadow: FigmaTokens.shadowLight,
+    surfaceTint: FigmaTokens.surfaceTintLight,
+    outlineVariant: FigmaTokens.outlineVariantLight,
+    scrim: FigmaTokens.scrimLight,
+    surfaceContainerHighest: FigmaTokens.surfaceContainerHighestLight,
+    surfaceContainerHigh: FigmaTokens.surfaceContainerHighLight,
+    surfaceContainer: FigmaTokens.surfaceContainerLight,
+    surfaceContainerLow: FigmaTokens.surfaceContainerLowLight,
+    surfaceContainerLowest: FigmaTokens.surfaceContainerLowestLight,
+    surfaceBright: FigmaTokens.surfaceBrightLight,
+    surfaceDim: FigmaTokens.surfaceDimLight,
+    primaryHovered: FigmaTokens.primaryHoveredLight,
+    success: FigmaTokens.successLight,
+    onSuccess: FigmaTokens.onSuccessLight,
+    warning: FigmaTokens.warningLight,
+    onWarning: FigmaTokens.onWarningLight,
+    info: FigmaTokens.infoLight,
+    onInfo: FigmaTokens.onInfoLight,
+    white: FigmaTokens.whiteLight,
+    black: FigmaTokens.blackLight,
+    sectionBackground: FigmaTokens.sectionBackgroundLight,
   );
 
-  static const tablet = FigmaIcon(
-    icoCompact: 24.0,
-    icoDefault: 32.0,
-    icoLarge: 48.0,
-    icoHighlight: 64.0,
-    icoStatus: 80.0,
-    icoHerohero: 96.0,
-  );
-
-  /// Retrieve the nearest [FigmaIcon] from the widget tree.
-  static FigmaIcon of(BuildContext context) {
-    return Theme.of(context).extension<FigmaIcon>()!;
+  /// Retrieve the nearest [FigmaColor] from the widget tree.
+  static FigmaColor of(BuildContext context) {
+    return Theme.of(context).extension<FigmaColor>()!;
   }
 
   @override
-  FigmaIcon copyWith({
-    double? icoCompact,
-    double? icoDefault,
-    double? icoLarge,
-    double? icoHighlight,
-    double? icoStatus,
-    double? icoHerohero,
+  FigmaColor copyWith({
+    Color? primary,
+    Color? onPrimary,
+    Color? primaryContainer,
+    Color? onPrimaryContainer,
+    Color? primaryFixed,
+    Color? onPrimaryFixed,
+    Color? primaryFixedDim,
+    Color? onPrimaryFixedVariant,
+    Color? secondary,
+    Color? onSecondary,
+    Color? secondaryContainer,
+    Color? onSecondaryContainer,
+    Color? secondaryFixed,
+    Color? onSecondaryFixed,
+    Color? secondaryFixedDim,
+    Color? onSecondaryFixedVariant,
+    Color? tertiary,
+    Color? onTertiary,
+    Color? tertiaryContainer,
+    Color? onTertiaryContainer,
+    Color? tertiaryFixed,
+    Color? onTertiaryFixed,
+    Color? tertiaryFixedDim,
+    Color? onTertiaryFixedVariant,
+    Color? error,
+    Color? onError,
+    Color? errorContainer,
+    Color? onErrorContainer,
+    Color? outline,
+    Color? background,
+    Color? onBackground,
+    Color? surface,
+    Color? onSurface,
+    Color? surfaceVariant,
+    Color? onSurfaceVariant,
+    Color? inverseSurface,
+    Color? inverseOnSurface,
+    Color? inversePrimary,
+    Color? shadow,
+    Color? surfaceTint,
+    Color? outlineVariant,
+    Color? scrim,
+    Color? surfaceContainerHighest,
+    Color? surfaceContainerHigh,
+    Color? surfaceContainer,
+    Color? surfaceContainerLow,
+    Color? surfaceContainerLowest,
+    Color? surfaceBright,
+    Color? surfaceDim,
+    Color? primaryHovered,
+    Color? success,
+    Color? onSuccess,
+    Color? warning,
+    Color? onWarning,
+    Color? info,
+    Color? onInfo,
+    Color? white,
+    Color? black,
+    Color? sectionBackground,
   }) {
-    return FigmaIcon(
-      icoCompact: icoCompact ?? this.icoCompact,
-      icoDefault: icoDefault ?? this.icoDefault,
-      icoLarge: icoLarge ?? this.icoLarge,
-      icoHighlight: icoHighlight ?? this.icoHighlight,
-      icoStatus: icoStatus ?? this.icoStatus,
-      icoHerohero: icoHerohero ?? this.icoHerohero,
+    return FigmaColor(
+      primary: primary ?? this.primary,
+      onPrimary: onPrimary ?? this.onPrimary,
+      primaryContainer: primaryContainer ?? this.primaryContainer,
+      onPrimaryContainer: onPrimaryContainer ?? this.onPrimaryContainer,
+      primaryFixed: primaryFixed ?? this.primaryFixed,
+      onPrimaryFixed: onPrimaryFixed ?? this.onPrimaryFixed,
+      primaryFixedDim: primaryFixedDim ?? this.primaryFixedDim,
+      onPrimaryFixedVariant: onPrimaryFixedVariant ?? this.onPrimaryFixedVariant,
+      secondary: secondary ?? this.secondary,
+      onSecondary: onSecondary ?? this.onSecondary,
+      secondaryContainer: secondaryContainer ?? this.secondaryContainer,
+      onSecondaryContainer: onSecondaryContainer ?? this.onSecondaryContainer,
+      secondaryFixed: secondaryFixed ?? this.secondaryFixed,
+      onSecondaryFixed: onSecondaryFixed ?? this.onSecondaryFixed,
+      secondaryFixedDim: secondaryFixedDim ?? this.secondaryFixedDim,
+      onSecondaryFixedVariant: onSecondaryFixedVariant ?? this.onSecondaryFixedVariant,
+      tertiary: tertiary ?? this.tertiary,
+      onTertiary: onTertiary ?? this.onTertiary,
+      tertiaryContainer: tertiaryContainer ?? this.tertiaryContainer,
+      onTertiaryContainer: onTertiaryContainer ?? this.onTertiaryContainer,
+      tertiaryFixed: tertiaryFixed ?? this.tertiaryFixed,
+      onTertiaryFixed: onTertiaryFixed ?? this.onTertiaryFixed,
+      tertiaryFixedDim: tertiaryFixedDim ?? this.tertiaryFixedDim,
+      onTertiaryFixedVariant: onTertiaryFixedVariant ?? this.onTertiaryFixedVariant,
+      error: error ?? this.error,
+      onError: onError ?? this.onError,
+      errorContainer: errorContainer ?? this.errorContainer,
+      onErrorContainer: onErrorContainer ?? this.onErrorContainer,
+      outline: outline ?? this.outline,
+      background: background ?? this.background,
+      onBackground: onBackground ?? this.onBackground,
+      surface: surface ?? this.surface,
+      onSurface: onSurface ?? this.onSurface,
+      surfaceVariant: surfaceVariant ?? this.surfaceVariant,
+      onSurfaceVariant: onSurfaceVariant ?? this.onSurfaceVariant,
+      inverseSurface: inverseSurface ?? this.inverseSurface,
+      inverseOnSurface: inverseOnSurface ?? this.inverseOnSurface,
+      inversePrimary: inversePrimary ?? this.inversePrimary,
+      shadow: shadow ?? this.shadow,
+      surfaceTint: surfaceTint ?? this.surfaceTint,
+      outlineVariant: outlineVariant ?? this.outlineVariant,
+      scrim: scrim ?? this.scrim,
+      surfaceContainerHighest: surfaceContainerHighest ?? this.surfaceContainerHighest,
+      surfaceContainerHigh: surfaceContainerHigh ?? this.surfaceContainerHigh,
+      surfaceContainer: surfaceContainer ?? this.surfaceContainer,
+      surfaceContainerLow: surfaceContainerLow ?? this.surfaceContainerLow,
+      surfaceContainerLowest: surfaceContainerLowest ?? this.surfaceContainerLowest,
+      surfaceBright: surfaceBright ?? this.surfaceBright,
+      surfaceDim: surfaceDim ?? this.surfaceDim,
+      primaryHovered: primaryHovered ?? this.primaryHovered,
+      success: success ?? this.success,
+      onSuccess: onSuccess ?? this.onSuccess,
+      warning: warning ?? this.warning,
+      onWarning: onWarning ?? this.onWarning,
+      info: info ?? this.info,
+      onInfo: onInfo ?? this.onInfo,
+      white: white ?? this.white,
+      black: black ?? this.black,
+      sectionBackground: sectionBackground ?? this.sectionBackground,
     );
   }
 
   @override
-  FigmaIcon lerp(covariant FigmaIcon? other, double t) {
+  FigmaColor lerp(covariant FigmaColor? other, double t) {
     if (other == null) return this;
-    return FigmaIcon(
-      icoCompact: icoCompact + (other.icoCompact - icoCompact) * t,
-      icoDefault: icoDefault + (other.icoDefault - icoDefault) * t,
-      icoLarge: icoLarge + (other.icoLarge - icoLarge) * t,
-      icoHighlight: icoHighlight + (other.icoHighlight - icoHighlight) * t,
-      icoStatus: icoStatus + (other.icoStatus - icoStatus) * t,
-      icoHerohero: icoHerohero + (other.icoHerohero - icoHerohero) * t,
+    return FigmaColor(
+      primary: Color.lerp(primary, other.primary, t)!,
+      onPrimary: Color.lerp(onPrimary, other.onPrimary, t)!,
+      primaryContainer: Color.lerp(primaryContainer, other.primaryContainer, t)!,
+      onPrimaryContainer: Color.lerp(onPrimaryContainer, other.onPrimaryContainer, t)!,
+      primaryFixed: Color.lerp(primaryFixed, other.primaryFixed, t)!,
+      onPrimaryFixed: Color.lerp(onPrimaryFixed, other.onPrimaryFixed, t)!,
+      primaryFixedDim: Color.lerp(primaryFixedDim, other.primaryFixedDim, t)!,
+      onPrimaryFixedVariant: Color.lerp(onPrimaryFixedVariant, other.onPrimaryFixedVariant, t)!,
+      secondary: Color.lerp(secondary, other.secondary, t)!,
+      onSecondary: Color.lerp(onSecondary, other.onSecondary, t)!,
+      secondaryContainer: Color.lerp(secondaryContainer, other.secondaryContainer, t)!,
+      onSecondaryContainer: Color.lerp(onSecondaryContainer, other.onSecondaryContainer, t)!,
+      secondaryFixed: Color.lerp(secondaryFixed, other.secondaryFixed, t)!,
+      onSecondaryFixed: Color.lerp(onSecondaryFixed, other.onSecondaryFixed, t)!,
+      secondaryFixedDim: Color.lerp(secondaryFixedDim, other.secondaryFixedDim, t)!,
+      onSecondaryFixedVariant: Color.lerp(onSecondaryFixedVariant, other.onSecondaryFixedVariant, t)!,
+      tertiary: Color.lerp(tertiary, other.tertiary, t)!,
+      onTertiary: Color.lerp(onTertiary, other.onTertiary, t)!,
+      tertiaryContainer: Color.lerp(tertiaryContainer, other.tertiaryContainer, t)!,
+      onTertiaryContainer: Color.lerp(onTertiaryContainer, other.onTertiaryContainer, t)!,
+      tertiaryFixed: Color.lerp(tertiaryFixed, other.tertiaryFixed, t)!,
+      onTertiaryFixed: Color.lerp(onTertiaryFixed, other.onTertiaryFixed, t)!,
+      tertiaryFixedDim: Color.lerp(tertiaryFixedDim, other.tertiaryFixedDim, t)!,
+      onTertiaryFixedVariant: Color.lerp(onTertiaryFixedVariant, other.onTertiaryFixedVariant, t)!,
+      error: Color.lerp(error, other.error, t)!,
+      onError: Color.lerp(onError, other.onError, t)!,
+      errorContainer: Color.lerp(errorContainer, other.errorContainer, t)!,
+      onErrorContainer: Color.lerp(onErrorContainer, other.onErrorContainer, t)!,
+      outline: Color.lerp(outline, other.outline, t)!,
+      background: Color.lerp(background, other.background, t)!,
+      onBackground: Color.lerp(onBackground, other.onBackground, t)!,
+      surface: Color.lerp(surface, other.surface, t)!,
+      onSurface: Color.lerp(onSurface, other.onSurface, t)!,
+      surfaceVariant: Color.lerp(surfaceVariant, other.surfaceVariant, t)!,
+      onSurfaceVariant: Color.lerp(onSurfaceVariant, other.onSurfaceVariant, t)!,
+      inverseSurface: Color.lerp(inverseSurface, other.inverseSurface, t)!,
+      inverseOnSurface: Color.lerp(inverseOnSurface, other.inverseOnSurface, t)!,
+      inversePrimary: Color.lerp(inversePrimary, other.inversePrimary, t)!,
+      shadow: Color.lerp(shadow, other.shadow, t)!,
+      surfaceTint: Color.lerp(surfaceTint, other.surfaceTint, t)!,
+      outlineVariant: Color.lerp(outlineVariant, other.outlineVariant, t)!,
+      scrim: Color.lerp(scrim, other.scrim, t)!,
+      surfaceContainerHighest: Color.lerp(surfaceContainerHighest, other.surfaceContainerHighest, t)!,
+      surfaceContainerHigh: Color.lerp(surfaceContainerHigh, other.surfaceContainerHigh, t)!,
+      surfaceContainer: Color.lerp(surfaceContainer, other.surfaceContainer, t)!,
+      surfaceContainerLow: Color.lerp(surfaceContainerLow, other.surfaceContainerLow, t)!,
+      surfaceContainerLowest: Color.lerp(surfaceContainerLowest, other.surfaceContainerLowest, t)!,
+      surfaceBright: Color.lerp(surfaceBright, other.surfaceBright, t)!,
+      surfaceDim: Color.lerp(surfaceDim, other.surfaceDim, t)!,
+      primaryHovered: Color.lerp(primaryHovered, other.primaryHovered, t)!,
+      success: Color.lerp(success, other.success, t)!,
+      onSuccess: Color.lerp(onSuccess, other.onSuccess, t)!,
+      warning: Color.lerp(warning, other.warning, t)!,
+      onWarning: Color.lerp(onWarning, other.onWarning, t)!,
+      info: Color.lerp(info, other.info, t)!,
+      onInfo: Color.lerp(onInfo, other.onInfo, t)!,
+      white: Color.lerp(white, other.white, t)!,
+      black: Color.lerp(black, other.black, t)!,
+      sectionBackground: Color.lerp(sectionBackground, other.sectionBackground, t)!,
     );
   }
 
-  @override
-  int get hashCode {
-    return Object.hash(
-      icoCompact,
-      icoDefault,
-      icoLarge,
-      icoHighlight,
-      icoStatus,
-      icoHerohero,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! FigmaIcon) return false;
-    return icoCompact == other.icoCompact && icoDefault == other.icoDefault && icoLarge == other.icoLarge && icoHighlight == other.icoHighlight && icoStatus == other.icoStatus && icoHerohero == other.icoHerohero;
-  }
 }
 
-class _FigmaImage_SizeGroup {
-  final double imageThumbnail;
-  final double imageList;
-  final double imageCard;
-  final double imageFeauture;
+class FigmaCorners extends ThemeExtension<FigmaCorners> {
+  final double cornerNone;
+  final double cornerExtraSmall;
+  final double cornerSmall;
+  final double cornerMedium;
+  final double cornerLarge;
+  final double cornerExtraLarge;
+  final double cornerFull;
+  final double cornerLargeIncreased;
+  final double cornerExtraLargeIncreased;
+  final double cornerExtraExtraLarge;
 
-  const _FigmaImage_SizeGroup({
-    required this.imageThumbnail,
-    required this.imageList,
-    required this.imageCard,
-    required this.imageFeauture,
+  const FigmaCorners({
+    required this.cornerNone,
+    required this.cornerExtraSmall,
+    required this.cornerSmall,
+    required this.cornerMedium,
+    required this.cornerLarge,
+    required this.cornerExtraLarge,
+    required this.cornerFull,
+    required this.cornerLargeIncreased,
+    required this.cornerExtraLargeIncreased,
+    required this.cornerExtraExtraLarge,
   });
 
-  _FigmaImage_SizeGroup copyWith({
-    double? imageThumbnail,
-    double? imageList,
-    double? imageCard,
-    double? imageFeauture,
-  }) {
-    return _FigmaImage_SizeGroup(
-      imageThumbnail: imageThumbnail ?? this.imageThumbnail,
-      imageList: imageList ?? this.imageList,
-      imageCard: imageCard ?? this.imageCard,
-      imageFeauture: imageFeauture ?? this.imageFeauture,
-    );
-  }
-
-  static _FigmaImage_SizeGroup lerp(_FigmaImage_SizeGroup a, _FigmaImage_SizeGroup b, double t) {
-    return _FigmaImage_SizeGroup(
-      imageThumbnail: a.imageThumbnail + (b.imageThumbnail - a.imageThumbnail) * t,
-      imageList: a.imageList + (b.imageList - a.imageList) * t,
-      imageCard: a.imageCard + (b.imageCard - a.imageCard) * t,
-      imageFeauture: a.imageFeauture + (b.imageFeauture - a.imageFeauture) * t,
-    );
-  }
-}
-
-class _FigmaImage_RatioGroup {
-  final double ratioSquare;
-  final double ratioPortrait;
-  final double ratioLandspace;
-  final double ratioBanner;
-
-  const _FigmaImage_RatioGroup({
-    required this.ratioSquare,
-    required this.ratioPortrait,
-    required this.ratioLandspace,
-    required this.ratioBanner,
-  });
-
-  _FigmaImage_RatioGroup copyWith({
-    double? ratioSquare,
-    double? ratioPortrait,
-    double? ratioLandspace,
-    double? ratioBanner,
-  }) {
-    return _FigmaImage_RatioGroup(
-      ratioSquare: ratioSquare ?? this.ratioSquare,
-      ratioPortrait: ratioPortrait ?? this.ratioPortrait,
-      ratioLandspace: ratioLandspace ?? this.ratioLandspace,
-      ratioBanner: ratioBanner ?? this.ratioBanner,
-    );
-  }
-
-  static _FigmaImage_RatioGroup lerp(_FigmaImage_RatioGroup a, _FigmaImage_RatioGroup b, double t) {
-    return _FigmaImage_RatioGroup(
-      ratioSquare: a.ratioSquare + (b.ratioSquare - a.ratioSquare) * t,
-      ratioPortrait: a.ratioPortrait + (b.ratioPortrait - a.ratioPortrait) * t,
-      ratioLandspace: a.ratioLandspace + (b.ratioLandspace - a.ratioLandspace) * t,
-      ratioBanner: a.ratioBanner + (b.ratioBanner - a.ratioBanner) * t,
-    );
-  }
-}
-
-class FigmaImage extends ThemeExtension<FigmaImage> {
-  final _FigmaImage_SizeGroup size;
-  final _FigmaImage_RatioGroup ratio;
-
-  const FigmaImage({
-    required this.size,
-    required this.ratio,
-  });
-
-  static const mobile = FigmaImage(
-    size: _FigmaImage_SizeGroup(
-      imageThumbnail: 64.0,
-      imageList: 96.0,
-      imageCard: 128.0,
-      imageFeauture: 160.0,
-    ),
-    ratio: _FigmaImage_RatioGroup(
-      ratioSquare: 0.0,
-      ratioPortrait: 0.0,
-      ratioLandspace: 0.0,
-      ratioBanner: 0.0,
-    ),
+  static const corner = FigmaCorners(
+    cornerNone: FigmaTokens.cornerNoneCorner,
+    cornerExtraSmall: FigmaTokens.cornerExtraSmallCorner,
+    cornerSmall: FigmaTokens.cornerSmallCorner,
+    cornerMedium: FigmaTokens.cornerMediumCorner,
+    cornerLarge: FigmaTokens.cornerLargeCorner,
+    cornerExtraLarge: FigmaTokens.cornerExtraLargeCorner,
+    cornerFull: FigmaTokens.cornerFullCorner,
+    cornerLargeIncreased: FigmaTokens.cornerLargeIncreasedCorner,
+    cornerExtraLargeIncreased: FigmaTokens.cornerExtraLargeIncreasedCorner,
+    cornerExtraExtraLarge: FigmaTokens.cornerExtraExtraLargeCorner,
   );
 
-  static const tablet = FigmaImage(
-    size: _FigmaImage_SizeGroup(
-      imageThumbnail: 96.0,
-      imageList: 128.0,
-      imageCard: 160.0,
-      imageFeauture: 192.0,
-    ),
-    ratio: _FigmaImage_RatioGroup(
-      ratioSquare: 0.0,
-      ratioPortrait: 0.0,
-      ratioLandspace: 0.0,
-      ratioBanner: 0.0,
-    ),
-  );
-
-  /// Retrieve the nearest [FigmaImage] from the widget tree.
-  static FigmaImage of(BuildContext context) {
-    return Theme.of(context).extension<FigmaImage>()!;
+  /// Retrieve the nearest [FigmaCorners] from the widget tree.
+  static FigmaCorners of(BuildContext context) {
+    return Theme.of(context).extension<FigmaCorners>()!;
   }
 
   @override
-  FigmaImage copyWith({
-    _FigmaImage_SizeGroup? size,
-    _FigmaImage_RatioGroup? ratio,
+  FigmaCorners copyWith({
+    double? cornerNone,
+    double? cornerExtraSmall,
+    double? cornerSmall,
+    double? cornerMedium,
+    double? cornerLarge,
+    double? cornerExtraLarge,
+    double? cornerFull,
+    double? cornerLargeIncreased,
+    double? cornerExtraLargeIncreased,
+    double? cornerExtraExtraLarge,
   }) {
-    return FigmaImage(
-      size: size ?? this.size,
-      ratio: ratio ?? this.ratio,
+    return FigmaCorners(
+      cornerNone: cornerNone ?? this.cornerNone,
+      cornerExtraSmall: cornerExtraSmall ?? this.cornerExtraSmall,
+      cornerSmall: cornerSmall ?? this.cornerSmall,
+      cornerMedium: cornerMedium ?? this.cornerMedium,
+      cornerLarge: cornerLarge ?? this.cornerLarge,
+      cornerExtraLarge: cornerExtraLarge ?? this.cornerExtraLarge,
+      cornerFull: cornerFull ?? this.cornerFull,
+      cornerLargeIncreased: cornerLargeIncreased ?? this.cornerLargeIncreased,
+      cornerExtraLargeIncreased: cornerExtraLargeIncreased ?? this.cornerExtraLargeIncreased,
+      cornerExtraExtraLarge: cornerExtraExtraLarge ?? this.cornerExtraExtraLarge,
     );
   }
 
   @override
-  FigmaImage lerp(covariant FigmaImage? other, double t) {
+  FigmaCorners lerp(covariant FigmaCorners? other, double t) {
     if (other == null) return this;
-    return FigmaImage(
-      size: _FigmaImage_SizeGroup.lerp(size, other.size, t),
-      ratio: _FigmaImage_RatioGroup.lerp(ratio, other.ratio, t),
+    return FigmaCorners(
+      cornerNone: lerpDouble(cornerNone, other.cornerNone, t)!,
+      cornerExtraSmall: lerpDouble(cornerExtraSmall, other.cornerExtraSmall, t)!,
+      cornerSmall: lerpDouble(cornerSmall, other.cornerSmall, t)!,
+      cornerMedium: lerpDouble(cornerMedium, other.cornerMedium, t)!,
+      cornerLarge: lerpDouble(cornerLarge, other.cornerLarge, t)!,
+      cornerExtraLarge: lerpDouble(cornerExtraLarge, other.cornerExtraLarge, t)!,
+      cornerFull: lerpDouble(cornerFull, other.cornerFull, t)!,
+      cornerLargeIncreased: lerpDouble(cornerLargeIncreased, other.cornerLargeIncreased, t)!,
+      cornerExtraLargeIncreased: lerpDouble(cornerExtraLargeIncreased, other.cornerExtraLargeIncreased, t)!,
+      cornerExtraExtraLarge: lerpDouble(cornerExtraExtraLarge, other.cornerExtraExtraLarge, t)!,
     );
   }
 
-  @override
-  int get hashCode {
-    return Object.hash(
-      size,
-      ratio,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! FigmaImage) return false;
-    return size == other.size && ratio == other.ratio;
-  }
 }
 
-class FigmaSpacing extends ThemeExtension<FigmaSpacing> {
-  final double spaceInlineTight;
-  final double spaceInline;
-  final double spaceInlineLoose;
-  final double spaceComponentGap;
-  final double spaceComponentSm;
-  final double spaceComponentMd;
-  final double spaceComponentLg;
-  final double spaceGroup;
-  final double spaceGroupLg;
-  final double spaceBlock;
-  final double spaceBlockLg;
-  final double spaceSection;
-  final double spaceSectionLg;
-  final double screen;
+class FigmaGrids extends ThemeExtension<FigmaGrids> {
+  final double columns;
+  final double margin;
+  final double gutter;
 
-  const FigmaSpacing({
-    required this.spaceInlineTight,
-    required this.spaceInline,
-    required this.spaceInlineLoose,
-    required this.spaceComponentGap,
-    required this.spaceComponentSm,
-    required this.spaceComponentMd,
-    required this.spaceComponentLg,
-    required this.spaceGroup,
-    required this.spaceGroupLg,
-    required this.spaceBlock,
-    required this.spaceBlockLg,
-    required this.spaceSection,
-    required this.spaceSectionLg,
-    required this.screen,
+  const FigmaGrids({
+    required this.columns,
+    required this.margin,
+    required this.gutter,
   });
 
-  static const desktop = FigmaSpacing(
-    spaceInlineTight: 4.0,
-    spaceInline: 8.0,
-    spaceInlineLoose: 12.0,
-    spaceComponentGap: 24.0,
-    spaceComponentSm: 24.0,
-    spaceComponentMd: 32.0,
-    spaceComponentLg: 48.0,
-    spaceGroup: 16.0,
-    spaceGroupLg: 32.0,
-    spaceBlock: 16.0,
-    spaceBlockLg: 32.0,
-    spaceSection: 32.0,
-    spaceSectionLg: 64.0,
-    screen: 1024.0,
+  static const desktop = FigmaGrids(
+    columns: FigmaTokens.columnsDesktop,
+    margin: FigmaTokens.marginDesktop,
+    gutter: FigmaTokens.gutterDesktop,
   );
 
-  static const mobile = FigmaSpacing(
-    spaceInlineTight: 4.0,
-    spaceInline: 8.0,
-    spaceInlineLoose: 12.0,
-    spaceComponentGap: 8.0,
-    spaceComponentSm: 16.0,
-    spaceComponentMd: 24.0,
-    spaceComponentLg: 32.0,
-    spaceGroup: 16.0,
-    spaceGroupLg: 32.0,
-    spaceBlock: 16.0,
-    spaceBlockLg: 32.0,
-    spaceSection: 32.0,
-    spaceSectionLg: 64.0,
-    screen: 375.0,
+  static const mobile = FigmaGrids(
+    columns: FigmaTokens.columnsMobile,
+    margin: FigmaTokens.marginMobile,
+    gutter: FigmaTokens.gutterMobile,
   );
 
-  static const tablet = FigmaSpacing(
-    spaceInlineTight: 4.0,
-    spaceInline: 8.0,
-    spaceInlineLoose: 12.0,
-    spaceComponentGap: 16.0,
-    spaceComponentSm: 24.0,
-    spaceComponentMd: 32.0,
-    spaceComponentLg: 48.0,
-    spaceGroup: 16.0,
-    spaceGroupLg: 32.0,
-    spaceBlock: 16.0,
-    spaceBlockLg: 32.0,
-    spaceSection: 32.0,
-    spaceSectionLg: 64.0,
-    screen: 640.0,
+  static const tablet = FigmaGrids(
+    columns: FigmaTokens.columnsTablet,
+    margin: FigmaTokens.marginTablet,
+    gutter: FigmaTokens.gutterTablet,
   );
 
-  /// Retrieve the nearest [FigmaSpacing] from the widget tree.
-  static FigmaSpacing of(BuildContext context) {
-    return Theme.of(context).extension<FigmaSpacing>()!;
+  /// Retrieve the nearest [FigmaGrids] from the widget tree.
+  static FigmaGrids of(BuildContext context) {
+    return Theme.of(context).extension<FigmaGrids>()!;
   }
 
   @override
-  FigmaSpacing copyWith({
-    double? spaceInlineTight,
-    double? spaceInline,
-    double? spaceInlineLoose,
-    double? spaceComponentGap,
-    double? spaceComponentSm,
-    double? spaceComponentMd,
-    double? spaceComponentLg,
-    double? spaceGroup,
-    double? spaceGroupLg,
-    double? spaceBlock,
-    double? spaceBlockLg,
-    double? spaceSection,
-    double? spaceSectionLg,
-    double? screen,
+  FigmaGrids copyWith({
+    double? columns,
+    double? margin,
+    double? gutter,
   }) {
-    return FigmaSpacing(
-      spaceInlineTight: spaceInlineTight ?? this.spaceInlineTight,
-      spaceInline: spaceInline ?? this.spaceInline,
-      spaceInlineLoose: spaceInlineLoose ?? this.spaceInlineLoose,
-      spaceComponentGap: spaceComponentGap ?? this.spaceComponentGap,
-      spaceComponentSm: spaceComponentSm ?? this.spaceComponentSm,
-      spaceComponentMd: spaceComponentMd ?? this.spaceComponentMd,
-      spaceComponentLg: spaceComponentLg ?? this.spaceComponentLg,
-      spaceGroup: spaceGroup ?? this.spaceGroup,
-      spaceGroupLg: spaceGroupLg ?? this.spaceGroupLg,
-      spaceBlock: spaceBlock ?? this.spaceBlock,
-      spaceBlockLg: spaceBlockLg ?? this.spaceBlockLg,
-      spaceSection: spaceSection ?? this.spaceSection,
-      spaceSectionLg: spaceSectionLg ?? this.spaceSectionLg,
-      screen: screen ?? this.screen,
+    return FigmaGrids(
+      columns: columns ?? this.columns,
+      margin: margin ?? this.margin,
+      gutter: gutter ?? this.gutter,
     );
   }
 
   @override
-  FigmaSpacing lerp(covariant FigmaSpacing? other, double t) {
+  FigmaGrids lerp(covariant FigmaGrids? other, double t) {
     if (other == null) return this;
-    return FigmaSpacing(
-      spaceInlineTight: spaceInlineTight + (other.spaceInlineTight - spaceInlineTight) * t,
-      spaceInline: spaceInline + (other.spaceInline - spaceInline) * t,
-      spaceInlineLoose: spaceInlineLoose + (other.spaceInlineLoose - spaceInlineLoose) * t,
-      spaceComponentGap: spaceComponentGap + (other.spaceComponentGap - spaceComponentGap) * t,
-      spaceComponentSm: spaceComponentSm + (other.spaceComponentSm - spaceComponentSm) * t,
-      spaceComponentMd: spaceComponentMd + (other.spaceComponentMd - spaceComponentMd) * t,
-      spaceComponentLg: spaceComponentLg + (other.spaceComponentLg - spaceComponentLg) * t,
-      spaceGroup: spaceGroup + (other.spaceGroup - spaceGroup) * t,
-      spaceGroupLg: spaceGroupLg + (other.spaceGroupLg - spaceGroupLg) * t,
-      spaceBlock: spaceBlock + (other.spaceBlock - spaceBlock) * t,
-      spaceBlockLg: spaceBlockLg + (other.spaceBlockLg - spaceBlockLg) * t,
-      spaceSection: spaceSection + (other.spaceSection - spaceSection) * t,
-      spaceSectionLg: spaceSectionLg + (other.spaceSectionLg - spaceSectionLg) * t,
-      screen: screen + (other.screen - screen) * t,
+    return FigmaGrids(
+      columns: lerpDouble(columns, other.columns, t)!,
+      margin: lerpDouble(margin, other.margin, t)!,
+      gutter: lerpDouble(gutter, other.gutter, t)!,
+    );
+  }
+
+}
+
+class FigmaSpacings extends ThemeExtension<FigmaSpacings> {
+  final double space4;
+  final double space8;
+  final double space10;
+  final double space12;
+  final double space14;
+  final double space16;
+  final double space18;
+  final double space20;
+  final double space24;
+  final double space30;
+  final double space40;
+  final double space60;
+  final double space100;
+  final double space120;
+  final double spaceNone;
+
+  const FigmaSpacings({
+    required this.space4,
+    required this.space8,
+    required this.space10,
+    required this.space12,
+    required this.space14,
+    required this.space16,
+    required this.space18,
+    required this.space20,
+    required this.space24,
+    required this.space30,
+    required this.space40,
+    required this.space60,
+    required this.space100,
+    required this.space120,
+    required this.spaceNone,
+  });
+
+  static const spacing = FigmaSpacings(
+    space4: FigmaTokens.space4Spacing,
+    space8: FigmaTokens.space8Spacing,
+    space10: FigmaTokens.space10Spacing,
+    space12: FigmaTokens.space12Spacing,
+    space14: FigmaTokens.space14Spacing,
+    space16: FigmaTokens.space16Spacing,
+    space18: FigmaTokens.space18Spacing,
+    space20: FigmaTokens.space20Spacing,
+    space24: FigmaTokens.space24Spacing,
+    space30: FigmaTokens.space30Spacing,
+    space40: FigmaTokens.space40Spacing,
+    space60: FigmaTokens.space60Spacing,
+    space100: FigmaTokens.space100Spacing,
+    space120: FigmaTokens.space120Spacing,
+    spaceNone: FigmaTokens.spaceNoneSpacing,
+  );
+
+  /// Retrieve the nearest [FigmaSpacings] from the widget tree.
+  static FigmaSpacings of(BuildContext context) {
+    return Theme.of(context).extension<FigmaSpacings>()!;
+  }
+
+  @override
+  FigmaSpacings copyWith({
+    double? space4,
+    double? space8,
+    double? space10,
+    double? space12,
+    double? space14,
+    double? space16,
+    double? space18,
+    double? space20,
+    double? space24,
+    double? space30,
+    double? space40,
+    double? space60,
+    double? space100,
+    double? space120,
+    double? spaceNone,
+  }) {
+    return FigmaSpacings(
+      space4: space4 ?? this.space4,
+      space8: space8 ?? this.space8,
+      space10: space10 ?? this.space10,
+      space12: space12 ?? this.space12,
+      space14: space14 ?? this.space14,
+      space16: space16 ?? this.space16,
+      space18: space18 ?? this.space18,
+      space20: space20 ?? this.space20,
+      space24: space24 ?? this.space24,
+      space30: space30 ?? this.space30,
+      space40: space40 ?? this.space40,
+      space60: space60 ?? this.space60,
+      space100: space100 ?? this.space100,
+      space120: space120 ?? this.space120,
+      spaceNone: spaceNone ?? this.spaceNone,
     );
   }
 
   @override
-  int get hashCode {
-    return Object.hash(
-      spaceInlineTight,
-      spaceInline,
-      spaceInlineLoose,
-      spaceComponentGap,
-      spaceComponentSm,
-      spaceComponentMd,
-      spaceComponentLg,
-      spaceGroup,
-      spaceGroupLg,
-      spaceBlock,
-      spaceBlockLg,
-      spaceSection,
-      spaceSectionLg,
-      screen,
+  FigmaSpacings lerp(covariant FigmaSpacings? other, double t) {
+    if (other == null) return this;
+    return FigmaSpacings(
+      space4: lerpDouble(space4, other.space4, t)!,
+      space8: lerpDouble(space8, other.space8, t)!,
+      space10: lerpDouble(space10, other.space10, t)!,
+      space12: lerpDouble(space12, other.space12, t)!,
+      space14: lerpDouble(space14, other.space14, t)!,
+      space16: lerpDouble(space16, other.space16, t)!,
+      space18: lerpDouble(space18, other.space18, t)!,
+      space20: lerpDouble(space20, other.space20, t)!,
+      space24: lerpDouble(space24, other.space24, t)!,
+      space30: lerpDouble(space30, other.space30, t)!,
+      space40: lerpDouble(space40, other.space40, t)!,
+      space60: lerpDouble(space60, other.space60, t)!,
+      space100: lerpDouble(space100, other.space100, t)!,
+      space120: lerpDouble(space120, other.space120, t)!,
+      spaceNone: lerpDouble(spaceNone, other.spaceNone, t)!,
+    );
+  }
+
+}
+
+class FigmaTypography extends ThemeExtension<FigmaTypography> {
+  final TextStyle displayLarge;
+  final TextStyle displayMedium;
+  final TextStyle displaySmall;
+  final TextStyle headlineLarge;
+  final TextStyle headlineMedium;
+  final TextStyle headlineSmall;
+  final TextStyle titleLarge;
+  final TextStyle titleMedium;
+  final TextStyle titleSmall;
+  final TextStyle bodyLarge;
+  final TextStyle bodyMedium;
+  final TextStyle bodySmall;
+  final TextStyle labelLarge;
+  final TextStyle labelMedium;
+  final TextStyle labelSmall;
+
+  const FigmaTypography({
+    required this.displayLarge,
+    required this.displayMedium,
+    required this.displaySmall,
+    required this.headlineLarge,
+    required this.headlineMedium,
+    required this.headlineSmall,
+    required this.titleLarge,
+    required this.titleMedium,
+    required this.titleSmall,
+    required this.bodyLarge,
+    required this.bodyMedium,
+    required this.bodySmall,
+    required this.labelLarge,
+    required this.labelMedium,
+    required this.labelSmall,
+  });
+
+  static const desktop = FigmaTypography(
+    displayLarge: FigmaTokens.displayLargeDesktop,
+    displayMedium: FigmaTokens.displayMediumDesktop,
+    displaySmall: FigmaTokens.displaySmallDesktop,
+    headlineLarge: FigmaTokens.headlineLargeDesktop,
+    headlineMedium: FigmaTokens.headlineMediumDesktop,
+    headlineSmall: FigmaTokens.headlineSmallDesktop,
+    titleLarge: FigmaTokens.titleLargeDesktop,
+    titleMedium: FigmaTokens.titleMediumDesktop,
+    titleSmall: FigmaTokens.titleSmallDesktop,
+    bodyLarge: FigmaTokens.bodyLargeDesktop,
+    bodyMedium: FigmaTokens.bodyMediumDesktop,
+    bodySmall: FigmaTokens.bodySmallDesktop,
+    labelLarge: FigmaTokens.labelLargeDesktop,
+    labelMedium: FigmaTokens.labelMediumDesktop,
+    labelSmall: FigmaTokens.labelSmallDesktop,
+  );
+
+  static const mobile = FigmaTypography(
+    displayLarge: FigmaTokens.displayLargeMobile,
+    displayMedium: FigmaTokens.displayMediumMobile,
+    displaySmall: FigmaTokens.displaySmallMobile,
+    headlineLarge: FigmaTokens.headlineLargeMobile,
+    headlineMedium: FigmaTokens.headlineMediumMobile,
+    headlineSmall: FigmaTokens.headlineSmallMobile,
+    titleLarge: FigmaTokens.titleLargeMobile,
+    titleMedium: FigmaTokens.titleMediumMobile,
+    titleSmall: FigmaTokens.titleSmallMobile,
+    bodyLarge: FigmaTokens.bodyLargeMobile,
+    bodyMedium: FigmaTokens.bodyMediumMobile,
+    bodySmall: FigmaTokens.bodySmallMobile,
+    labelLarge: FigmaTokens.labelLargeMobile,
+    labelMedium: FigmaTokens.labelMediumMobile,
+    labelSmall: FigmaTokens.labelSmallMobile,
+  );
+
+  static const tablet = FigmaTypography(
+    displayLarge: FigmaTokens.displayLargeTablet,
+    displayMedium: FigmaTokens.displayMediumTablet,
+    displaySmall: FigmaTokens.displaySmallTablet,
+    headlineLarge: FigmaTokens.headlineLargeTablet,
+    headlineMedium: FigmaTokens.headlineMediumTablet,
+    headlineSmall: FigmaTokens.headlineSmallTablet,
+    titleLarge: FigmaTokens.titleLargeTablet,
+    titleMedium: FigmaTokens.titleMediumTablet,
+    titleSmall: FigmaTokens.titleSmallTablet,
+    bodyLarge: FigmaTokens.bodyLargeTablet,
+    bodyMedium: FigmaTokens.bodyMediumTablet,
+    bodySmall: FigmaTokens.bodySmallTablet,
+    labelLarge: FigmaTokens.labelLargeTablet,
+    labelMedium: FigmaTokens.labelMediumTablet,
+    labelSmall: FigmaTokens.labelSmallTablet,
+  );
+
+  /// Retrieve the nearest [FigmaTypography] from the widget tree.
+  static FigmaTypography of(BuildContext context) {
+    return Theme.of(context).extension<FigmaTypography>()!;
+  }
+
+  @override
+  FigmaTypography copyWith({
+    TextStyle? displayLarge,
+    TextStyle? displayMedium,
+    TextStyle? displaySmall,
+    TextStyle? headlineLarge,
+    TextStyle? headlineMedium,
+    TextStyle? headlineSmall,
+    TextStyle? titleLarge,
+    TextStyle? titleMedium,
+    TextStyle? titleSmall,
+    TextStyle? bodyLarge,
+    TextStyle? bodyMedium,
+    TextStyle? bodySmall,
+    TextStyle? labelLarge,
+    TextStyle? labelMedium,
+    TextStyle? labelSmall,
+  }) {
+    return FigmaTypography(
+      displayLarge: displayLarge ?? this.displayLarge,
+      displayMedium: displayMedium ?? this.displayMedium,
+      displaySmall: displaySmall ?? this.displaySmall,
+      headlineLarge: headlineLarge ?? this.headlineLarge,
+      headlineMedium: headlineMedium ?? this.headlineMedium,
+      headlineSmall: headlineSmall ?? this.headlineSmall,
+      titleLarge: titleLarge ?? this.titleLarge,
+      titleMedium: titleMedium ?? this.titleMedium,
+      titleSmall: titleSmall ?? this.titleSmall,
+      bodyLarge: bodyLarge ?? this.bodyLarge,
+      bodyMedium: bodyMedium ?? this.bodyMedium,
+      bodySmall: bodySmall ?? this.bodySmall,
+      labelLarge: labelLarge ?? this.labelLarge,
+      labelMedium: labelMedium ?? this.labelMedium,
+      labelSmall: labelSmall ?? this.labelSmall,
     );
   }
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! FigmaSpacing) return false;
-    return spaceInlineTight == other.spaceInlineTight && spaceInline == other.spaceInline && spaceInlineLoose == other.spaceInlineLoose && spaceComponentGap == other.spaceComponentGap && spaceComponentSm == other.spaceComponentSm && spaceComponentMd == other.spaceComponentMd && spaceComponentLg == other.spaceComponentLg && spaceGroup == other.spaceGroup && spaceGroupLg == other.spaceGroupLg && spaceBlock == other.spaceBlock && spaceBlockLg == other.spaceBlockLg && spaceSection == other.spaceSection && spaceSectionLg == other.spaceSectionLg && screen == other.screen;
+  FigmaTypography lerp(covariant FigmaTypography? other, double t) {
+    if (other == null) return this;
+    return FigmaTypography(
+      displayLarge: TextStyle.lerp(displayLarge, other.displayLarge, t)!,
+      displayMedium: TextStyle.lerp(displayMedium, other.displayMedium, t)!,
+      displaySmall: TextStyle.lerp(displaySmall, other.displaySmall, t)!,
+      headlineLarge: TextStyle.lerp(headlineLarge, other.headlineLarge, t)!,
+      headlineMedium: TextStyle.lerp(headlineMedium, other.headlineMedium, t)!,
+      headlineSmall: TextStyle.lerp(headlineSmall, other.headlineSmall, t)!,
+      titleLarge: TextStyle.lerp(titleLarge, other.titleLarge, t)!,
+      titleMedium: TextStyle.lerp(titleMedium, other.titleMedium, t)!,
+      titleSmall: TextStyle.lerp(titleSmall, other.titleSmall, t)!,
+      bodyLarge: TextStyle.lerp(bodyLarge, other.bodyLarge, t)!,
+      bodyMedium: TextStyle.lerp(bodyMedium, other.bodyMedium, t)!,
+      bodySmall: TextStyle.lerp(bodySmall, other.bodySmall, t)!,
+      labelLarge: TextStyle.lerp(labelLarge, other.labelLarge, t)!,
+      labelMedium: TextStyle.lerp(labelMedium, other.labelMedium, t)!,
+      labelSmall: TextStyle.lerp(labelSmall, other.labelSmall, t)!,
+    );
   }
+
 }
 
-class _FigmaAvataAccessor {
-  const _FigmaAvataAccessor();
+class _FigmaBreakpointsAccessor {
+  const _FigmaBreakpointsAccessor();
 
-  FigmaAvata get desktop => FigmaAvata.desktop;
-  FigmaAvata get mobile => FigmaAvata.mobile;
-  FigmaAvata get tablet => FigmaAvata.tablet;
+  FigmaBreakpoints get desktop => FigmaBreakpoints.desktop;
+  FigmaBreakpoints get mobile => FigmaBreakpoints.mobile;
+  FigmaBreakpoints get tablet => FigmaBreakpoints.tablet;
 
-  /// Retrieve [FigmaAvata] from the nearest [Theme].
-  FigmaAvata of(BuildContext context) => FigmaAvata.of(context);
+  /// Retrieve [FigmaBreakpoints] from the nearest [Theme].
+  FigmaBreakpoints of(BuildContext context) => FigmaBreakpoints.of(context);
 }
 
-class _FigmaIconAccessor {
-  const _FigmaIconAccessor();
+class _FigmaColorAccessor {
+  const _FigmaColorAccessor();
 
-  FigmaIcon get desktop => FigmaIcon.desktop;
-  FigmaIcon get mobile => FigmaIcon.mobile;
-  FigmaIcon get tablet => FigmaIcon.tablet;
+  FigmaColor get dark => FigmaColor.dark;
+  FigmaColor get light => FigmaColor.light;
 
-  /// Retrieve [FigmaIcon] from the nearest [Theme].
-  FigmaIcon of(BuildContext context) => FigmaIcon.of(context);
+  /// Retrieve [FigmaColor] from the nearest [Theme].
+  FigmaColor of(BuildContext context) => FigmaColor.of(context);
 }
 
-class _FigmaImageAccessor {
-  const _FigmaImageAccessor();
+class _FigmaCornersAccessor {
+  const _FigmaCornersAccessor();
 
-  FigmaImage get mobile => FigmaImage.mobile;
-  FigmaImage get tablet => FigmaImage.tablet;
+  FigmaCorners get corner => FigmaCorners.corner;
 
-  /// Retrieve [FigmaImage] from the nearest [Theme].
-  FigmaImage of(BuildContext context) => FigmaImage.of(context);
+  /// Retrieve [FigmaCorners] from the nearest [Theme].
+  FigmaCorners of(BuildContext context) => FigmaCorners.of(context);
 }
 
-class _FigmaSpacingAccessor {
-  const _FigmaSpacingAccessor();
+class _FigmaGridsAccessor {
+  const _FigmaGridsAccessor();
 
-  FigmaSpacing get desktop => FigmaSpacing.desktop;
-  FigmaSpacing get mobile => FigmaSpacing.mobile;
-  FigmaSpacing get tablet => FigmaSpacing.tablet;
+  FigmaGrids get desktop => FigmaGrids.desktop;
+  FigmaGrids get mobile => FigmaGrids.mobile;
+  FigmaGrids get tablet => FigmaGrids.tablet;
 
-  /// Retrieve [FigmaSpacing] from the nearest [Theme].
-  FigmaSpacing of(BuildContext context) => FigmaSpacing.of(context);
+  /// Retrieve [FigmaGrids] from the nearest [Theme].
+  FigmaGrids of(BuildContext context) => FigmaGrids.of(context);
+}
+
+class _FigmaSpacingsAccessor {
+  const _FigmaSpacingsAccessor();
+
+  FigmaSpacings get spacing => FigmaSpacings.spacing;
+
+  /// Retrieve [FigmaSpacings] from the nearest [Theme].
+  FigmaSpacings of(BuildContext context) => FigmaSpacings.of(context);
+}
+
+class _FigmaTypographyAccessor {
+  const _FigmaTypographyAccessor();
+
+  FigmaTypography get desktop => FigmaTypography.desktop;
+  FigmaTypography get mobile => FigmaTypography.mobile;
+  FigmaTypography get tablet => FigmaTypography.tablet;
+
+  /// Retrieve [FigmaTypography] from the nearest [Theme].
+  FigmaTypography of(BuildContext context) => FigmaTypography.of(context);
 }
 
 /// Top-level accessor for all Figma token collections.
 class Figma {
   Figma._();
 
-  static const avata = _FigmaAvataAccessor();
-  static const icon = _FigmaIconAccessor();
-  static const image = _FigmaImageAccessor();
-  static const spacing = _FigmaSpacingAccessor();
+  static const breakpoints = _FigmaBreakpointsAccessor();
+  static const color = _FigmaColorAccessor();
+  static const corners = _FigmaCornersAccessor();
+  static const grids = _FigmaGridsAccessor();
+  static const spacings = _FigmaSpacingsAccessor();
+  static const typography = _FigmaTypographyAccessor();
 
   // --- Mode presets (all collections at once) ---
 
-  static List<ThemeExtension> get desktop => [FigmaAvata.desktop, FigmaIcon.desktop, FigmaSpacing.desktop];
-  static List<ThemeExtension> get mobile => [FigmaAvata.mobile, FigmaIcon.mobile, FigmaImage.mobile, FigmaSpacing.mobile];
-  static List<ThemeExtension> get tablet => [FigmaAvata.tablet, FigmaIcon.tablet, FigmaImage.tablet, FigmaSpacing.tablet];
+  static List<ThemeExtension> get corner => [FigmaCorners.corner];
+  static List<ThemeExtension> get dark => [FigmaColor.dark];
+  static List<ThemeExtension> get desktop => [FigmaBreakpoints.desktop, FigmaGrids.desktop, FigmaTypography.desktop];
+  static List<ThemeExtension> get light => [FigmaColor.light];
+  static List<ThemeExtension> get mobile => [FigmaBreakpoints.mobile, FigmaGrids.mobile, FigmaTypography.mobile];
+  static List<ThemeExtension> get spacing => [FigmaSpacings.spacing];
+  static List<ThemeExtension> get tablet => [FigmaBreakpoints.tablet, FigmaGrids.tablet, FigmaTypography.tablet];
+}
+
+
+abstract class FigmaTokens {
+  static const Color primaryFixedLight = Color(0xFFDCE1FF);
+  static const Color warningDark = Color(0xFFF7F0E0);
+  static const Color sectionBackgroundLight = Color(0xFFF5F5F5);
+  static const Color primaryDark = Color(0xFF002E67);
+  static const Color onPrimaryDark = Color(0xFFFFFFFF);
+  static const Color primaryContainerDark = Color(0xFF122F53);
+  static const Color onPrimaryContainerDark = Color(0xFFDCE1FF);
+  static const Color primaryFixedDark = Color(0xFFDCE1FF);
+  static const Color onPrimaryFixedDark = Color(0xFF02174B);
+  static const Color primaryFixedDimDark = Color(0xFFB5C4FF);
+  static const Color onPrimaryFixedVariantDark = Color(0xFF344479);
+  static const Color secondaryDark = Color(0xFFE9ECF5);
+  static const Color onSecondaryDark = Color(0xFF003545);
+  static const Color secondaryContainerDark = Color(0xFF004D62);
+  static const Color onSecondaryContainerDark = Color(0xFFBAEAFF);
+  static const Color secondaryFixedDark = Color(0xFFBAEAFF);
+  static const Color onSecondaryFixedDark = Color(0xFF001F29);
+  static const Color secondaryFixedDimDark = Color(0xFF89D0ED);
+  static const Color onSecondaryFixedVariantDark = Color(0xFF004D62);
+  static const Color tertiaryDark = Color(0xFFFBB907);
+  static const Color onTertiaryDark = Color(0xFF20419A);
+  static const Color tertiaryContainerDark = Color(0xFF594400);
+  static const Color onTertiaryContainerDark = Color(0xFFFFDF95);
+  static const Color tertiaryFixedDark = Color(0xFFFFDF95);
+  static const Color onTertiaryFixedDark = Color(0xFF251A00);
+  static const Color tertiaryFixedDimDark = Color(0xFFE6C36C);
+  static const Color onTertiaryFixedVariantDark = Color(0xFF594400);
+  static const Color errorDark = Color(0xFFFFB4AB);
+  static const Color onErrorDark = Color(0xFF690005);
+  static const Color errorContainerDark = Color(0xFF93000A);
+  static const Color onErrorContainerDark = Color(0xFFFFDAD6);
+  static const Color outlineDark = Color(0xFF0B2469);
+  static const Color backgroundDark = Color(0xFFFFFFFF);
+  static const Color onBackgroundDark = Color(0xFF20419A);
+  static const Color surfaceDark = Color(0xFF07254A);
+  static const Color onSurfaceDark = Color(0xFFC8D0EA);
+  static const Color surfaceVariantDark = Color(0xFFE9ECF5);
+  static const Color onSurfaceVariantDark = Color(0xFFFFFFFF);
+  static const Color inverseSurfaceDark = Color(0xFFDEE3E5);
+  static const Color inverseOnSurfaceDark = Color(0xFF2B3133);
+  static const Color inversePrimaryDark = Color(0xFF4C5C92);
+  static const Color shadowDark = Color(0xFF000000);
+  static const Color surfaceTintDark = Color(0xFFB5C4FF);
+  static const Color outlineVariantDark = Color(0xFF3F484A);
+  static const Color scrimDark = Color(0xFF000000);
+  static const Color surfaceContainerHighestDark = Color(0xFF303637);
+  static const Color surfaceContainerHighDark = Color(0xFF07254A);
+  static const Color surfaceContainerDark = Color(0xFF1B2122);
+  static const Color surfaceContainerLowDark = Color(0xFF171D1E);
+  static const Color surfaceContainerLowestDark = Color(0xFF07254A);
+  static const Color surfaceBrightDark = Color(0xFF122F53);
+  static const Color surfaceDimDark = Color(0xFF0E1415);
+  static const Color primaryHoveredDark = Color(0xFF07254A);
+  static const Color successDark = Color(0xFFE0F0E8);
+  static const Color onSuccessDark = Color(0xFF005F2D);
+  static const Color blackLight = Color(0xFF000000);
+  static const Color onWarningDark = Color(0xFF876000);
+  static const Color infoDark = Color(0xFFE0EEFA);
+  static const Color onInfoDark = Color(0xFF02519A);
+  static const Color whiteDark = Color(0xFFFFFFFF);
+  static const Color blackDark = Color(0xFF000000);
+  static const Color sectionBackgroundDark = Color(0xFFF5F5F5);
+  static const Color primaryLight = Color(0xFF20419A);
+  static const Color onPrimaryLight = Color(0xFFFFFFFF);
+  static const Color primaryContainerLight = Color(0xFFE9ECF5);
+  static const Color onPrimaryContainerLight = Color(0xFF344479);
+  static const Color whiteLight = Color(0xFFFFFFFF);
+  static const Color onPrimaryFixedLight = Color(0xFF02174B);
+  static const Color primaryFixedDimLight = Color(0xFFB5C4FF);
+  static const Color onPrimaryFixedVariantLight = Color(0xFF344479);
+  static const Color secondaryLight = Color(0xFF5D74B1);
+  static const Color onSecondaryLight = Color(0xFFFFFFFF);
+  static const Color secondaryContainerLight = Color(0xFFE9ECF5);
+  static const Color onSecondaryContainerLight = Color(0xFF20419A);
+  static const Color secondaryFixedLight = Color(0xFFBAEAFF);
+  static const Color onSecondaryFixedLight = Color(0xFFBAEAFF);
+  static const Color secondaryFixedDimLight = Color(0xFF89D0ED);
+  static const Color onSecondaryFixedVariantLight = Color(0xFF004D62);
+  static const Color tertiaryLight = Color(0xFFFBB907);
+  static const Color onTertiaryLight = Color(0xFF20419A);
+  static const Color tertiaryContainerLight = Color(0xFFFFDF95);
+  static const Color onTertiaryContainerLight = Color(0xFF594400);
+  static const Color tertiaryFixedLight = Color(0xFFFFDF95);
+  static const Color onTertiaryFixedLight = Color(0xFF251A00);
+  static const Color tertiaryFixedDimLight = Color(0xFFE6C36C);
+  static const Color onTertiaryFixedVariantLight = Color(0xFF594400);
+  static const Color errorLight = Color(0xFFBA1A1A);
+  static const Color onErrorLight = Color(0xFFFFFFFF);
+  static const Color errorContainerLight = Color(0xFFFFDAD6);
+  static const Color onErrorContainerLight = Color(0xFF93000A);
+  static const Color outlineLight = Color(0xFF20419A);
+  static const Color backgroundLight = Color(0xFFFFFFFF);
+  static const Color onBackgroundLight = Color(0xFF20419A);
+  static const Color surfaceLight = Color(0xFFFFFFFF);
+  static const Color onSurfaceLight = Color(0xFF1D1B20);
+  static const Color surfaceVariantLight = Color(0xFFE9ECF5);
+  static const Color onSurfaceVariantLight = Color(0xFF20419A);
+  static const Color inverseSurfaceLight = Color(0xFF2B3133);
+  static const Color inverseOnSurfaceLight = Color(0xFFECF2F3);
+  static const Color inversePrimaryLight = Color(0xFFB5C4FF);
+  static const Color shadowLight = Color(0xFF000000);
+  static const Color surfaceTintLight = Color(0xFF4C5C92);
+  static const Color outlineVariantLight = Color(0xFFBFC8CA);
+  static const Color scrimLight = Color(0xFF000000);
+  static const Color surfaceContainerHighestLight = Color(0xFFDEE3E5);
+  static const Color surfaceContainerHighLight = Color(0xFFE3E9EA);
+  static const Color surfaceContainerLight = Color(0xFFE9EFF0);
+  static const Color onInfoLight = Color(0xFFFFFFFF);
+  static const Color surfaceContainerLowestLight = Color(0xFFFFFFFF);
+  static const Color surfaceBrightLight = Color(0xFFF5F5F5);
+  static const Color surfaceDimLight = Color(0xFFD5DBDC);
+  static const Color primaryHoveredLight = Color(0xFF07254A);
+  static const Color successLight = Color(0xFF008941);
+  static const Color onSuccessLight = Color(0xFFFFFFFF);
+  static const Color warningLight = Color(0xFFC28A00);
+  static const Color onWarningLight = Color(0xFFFFFFFF);
+  static const Color infoLight = Color(0xFF0375DD);
+  static const Color surfaceContainerLowLight = Color(0xFFEFF5F6);
+  static const TextStyle labelSmallTablet = TextStyle(  fontSize: 11.0,
+  height: 1.45,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelMediumTablet = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelLargeTablet = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyMediumTablet = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyLargeTablet = TextStyle(  fontSize: 16.0,
+  height: 1.50,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleSmallTablet = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleMediumTablet = TextStyle(  fontSize: 16.0,
+  height: 1.38,
+  letterSpacing: 0.15,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleLargeTablet = TextStyle(  fontSize: 22.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineSmallTablet = TextStyle(  fontSize: 28.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineMediumTablet = TextStyle(  fontSize: 35.0,
+  height: 1.37,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineLargeTablet = TextStyle(  fontSize: 40.0,
+  height: 1.40,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displaySmallTablet = TextStyle(  fontSize: 36.0,
+  height: 1.22,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayMediumTablet = TextStyle(  fontSize: 45.0,
+  height: 1.16,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayLargeTablet = TextStyle(  fontSize: 57.0,
+  height: 1.12,
+  letterSpacing: -0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodySmallTablet = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.4,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelSmallMobile = TextStyle(  fontSize: 11.0,
+  height: 1.45,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelMediumMobile = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelLargeMobile = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodySmallMobile = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.4,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyMediumMobile = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyLargeMobile = TextStyle(  fontSize: 16.0,
+  height: 1.50,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleSmallMobile = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleMediumMobile = TextStyle(  fontSize: 16.0,
+  height: 1.38,
+  letterSpacing: 0.15,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleLargeMobile = TextStyle(  fontSize: 16.0,
+  height: 1.38,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineSmallMobile = TextStyle(  fontSize: 22.0,
+  height: 1.55,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineMediumMobile = TextStyle(  fontSize: 28.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineLargeMobile = TextStyle(  fontSize: 36.0,
+  height: 1.39,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displaySmallMobile = TextStyle(  fontSize: 36.0,
+  height: 1.22,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleLargeDesktop = TextStyle(  fontSize: 22.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayLargeMobile = TextStyle(  fontSize: 57.0,
+  height: 1.12,
+  letterSpacing: -0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelSmallDesktop = TextStyle(  fontSize: 11.0,
+  height: 1.45,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelMediumDesktop = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle labelLargeDesktop = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyMediumDesktop = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodyLargeDesktop = TextStyle(  fontSize: 16.0,
+  height: 1.50,
+  letterSpacing: 0.5,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleSmallDesktop = TextStyle(  fontSize: 14.0,
+  height: 1.43,
+  letterSpacing: 0.1,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle titleMediumDesktop = TextStyle(  fontSize: 16.0,
+  height: 1.38,
+  letterSpacing: 0.15,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayLargeDesktop = TextStyle(  fontSize: 57.0,
+  height: 1.12,
+  letterSpacing: -0.25,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayMediumDesktop = TextStyle(  fontSize: 45.0,
+  height: 1.16,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displaySmallDesktop = TextStyle(  fontSize: 36.0,
+  height: 1.22,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineLargeDesktop = TextStyle(  fontSize: 40.0,
+  height: 1.40,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineMediumDesktop = TextStyle(  fontSize: 35.0,
+  height: 1.37,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle headlineSmallDesktop = TextStyle(  fontSize: 28.0,
+  height: 1.36,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle displayMediumMobile = TextStyle(  fontSize: 45.0,
+  height: 1.16,
+  letterSpacing: 0.0,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const TextStyle bodySmallDesktop = TextStyle(  fontSize: 12.0,
+  height: 1.33,
+  letterSpacing: 0.4,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Manrope',
+  package: 'example',
+)
+;
+  static const double space10Spacing = 10;
+  static const double space100Spacing = 100;
+  static const double space60Spacing = 60;
+  static const double marginDesktop = 64;
+  static const double space40Spacing = 40;
+  static const double space30Spacing = 30;
+  static const double space24Spacing = 24;
+  static const double space20Spacing = 20;
+  static const double space18Spacing = 18;
+  static const double space16Spacing = 16;
+  static const double space14Spacing = 14;
+  static const double space12Spacing = 12;
+  static const double space120Spacing = 120;
+  static const double space8Spacing = 8;
+  static const double space4Spacing = 4;
+  static const double gutterTablet = 24;
+  static const double marginTablet = 32;
+  static const double columnsTablet = 8;
+  static const double gutterMobile = 16;
+  static const double marginMobile = 16;
+  static const double columnsMobile = 4;
+  static const double gutterDesktop = 24;
+  static const double columnsDesktop = 12;
+  static const double cornerExtraExtraLargeCorner = 48;
+  static const double spaceNoneSpacing = 0;
+  static const double cornerLargeIncreasedCorner = 20;
+  static const double cornerFullCorner = 1000;
+  static const double cornerExtraLargeCorner = 28;
+  static const double cornerLargeCorner = 15;
+  static const double cornerMediumCorner = 10;
+  static const double cornerSmallCorner = 8;
+  static const double cornerExtraSmallCorner = 4;
+  static const double cornerNoneCorner = 0;
+  static const double breakpointDesktop = 1199;
+  static const double breakpointTablet = 839;
+  static const double breakpointMobile = 599;
+  static const double cornerExtraLargeIncreasedCorner = 32;
 }
 
 // --- BuildContext extensions ---
 
-extension FigmaAvataContext on BuildContext {
-  FigmaAvata get avata => FigmaAvata.of(this);
+extension FigmaBreakpointsContext on BuildContext {
+  FigmaBreakpoints get breakpoints => FigmaBreakpoints.of(this);
 }
 
-extension FigmaIconContext on BuildContext {
-  FigmaIcon get icon => FigmaIcon.of(this);
+extension FigmaColorContext on BuildContext {
+  FigmaColor get color => FigmaColor.of(this);
 }
 
-extension FigmaImageContext on BuildContext {
-  FigmaImage get image => FigmaImage.of(this);
+extension FigmaCornersContext on BuildContext {
+  FigmaCorners get corners => FigmaCorners.of(this);
 }
 
-extension FigmaSpacingContext on BuildContext {
-  FigmaSpacing get spacing => FigmaSpacing.of(this);
+extension FigmaGridsContext on BuildContext {
+  FigmaGrids get grids => FigmaGrids.of(this);
+}
+
+extension FigmaSpacingsContext on BuildContext {
+  FigmaSpacings get spacings => FigmaSpacings.of(this);
+}
+
+extension FigmaTypographyContext on BuildContext {
+  FigmaTypography get typography => FigmaTypography.of(this);
 }
 

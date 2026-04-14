@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(context.spacing.spaceBlock),
+        padding: EdgeInsets.all(context.spacings.space16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

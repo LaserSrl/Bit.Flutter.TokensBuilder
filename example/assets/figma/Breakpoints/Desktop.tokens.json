@@ -1,0 +1,12 @@
+{
+  "breakpoint": {
+    "$type": "number",
+    "$value": 1199,
+    "$extensions": {
+      "com.figma.modeName": "Desktop"
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Desktop"
+  }
+}
